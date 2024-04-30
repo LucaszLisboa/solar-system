@@ -1,0 +1,28 @@
+.navbar {
+  color: white;
+  background-color: #282c34;
+  display: flex;
+  justify-content: space-between;
+  padding-right: 2rem;
+}
+
+.links {
+  display: flex;
+  align-items: center;
+  gap: 1rem;
+}
+
+li {
+  list-style-type: none;
+}
+
+a {
+  text-decoration: none;
+  color: white;
+  transition: all 0.2s ease-in-out;
+}
+
+a:hover {
+  color: #61dafb;
+  transition: all 0.2s ease-in-out;
+}
