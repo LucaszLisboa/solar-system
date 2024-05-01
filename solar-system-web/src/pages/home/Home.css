@@ -1,3 +1,4 @@
-.container {
+.canvasContainer {
+  overflow: hidden;
   color: white;
 }

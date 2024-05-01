@@ -1,7 +1,7 @@
 import styled from "styled-components";
 import { Canvas } from "@react-three/fiber";
 import { Suspense } from "react";
-import { Earth } from "../../components/earth/Earth";
+import { Earth } from "../../components/planets/Earth";
 import SignupSection from "../../components/signupSection/SignupSection";
 
 const CanvasContainer = styled.div`
@@ -9,14 +9,14 @@ const CanvasContainer = styled.div`
   height: 100%;
 `;
 
-export function Signup(){
+export function Signup() {
   return (
-    <CanvasContainer> 
+    <CanvasContainer>
       <SignupSection />
       <Canvas>
         <Suspense fallback={null}>
-          <Earth/>
-        </Suspense> 
+          <Earth />
+        </Suspense>
       </Canvas>
     </CanvasContainer>
   )

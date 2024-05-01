@@ -2,7 +2,7 @@ import { Navigate } from "react-router-dom"
 import { useContext } from "react";
 import { Context } from "../context/AuthContext";
 
-interface Props {
+type Props = {
   children: React.ReactNode
 }
 
