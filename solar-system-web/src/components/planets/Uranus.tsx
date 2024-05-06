@@ -1,25 +1,25 @@
 import { useFrame, useLoader } from "@react-three/fiber";
-import VenusNormalMap from "../../assets/textures/4k_venus_atmosphere.jpg";
+import UranusNormalMap from "../../assets/textures/2k_uranus.jpg";
 import { TextureLoader } from "three";
 import { useRef } from "react";
 import * as THREE from "three";
 
-export function Venus() {
-  const [colorMap, normalMap] = useLoader(TextureLoader, [VenusNormalMap])
-  const venusRef = useRef<THREE.Mesh>(null);
+export function Uranus() {
+  const [colorMap, normalMap] = useLoader(TextureLoader, [UranusNormalMap])
+  const uranusRef = useRef<THREE.Mesh>(null);
 
   useFrame(({ clock }) => {
     const elapsedTime = clock.getElapsedTime();
-    const venus = venusRef.current;
-    if (venus) {
-      venus.rotation.y = elapsedTime / 6;
+    const uranus = uranusRef.current;
+    if (uranus) {
+      uranus.rotation.y = elapsedTime / 6;
     }
   });
 
   return (
     <>
-      <mesh ref={venusRef} position={[0, 0, 6]}>
-        <sphereGeometry args={[1, 32, 32]} />
+      <mesh ref={uranusRef} position={[0, 0, 21]}>
+        <sphereGeometry args={[1, 35, 35]} />
         <meshStandardMaterial
           map={colorMap}
           normalMap={normalMap}

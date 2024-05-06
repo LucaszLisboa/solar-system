@@ -1,25 +1,25 @@
 import { useFrame, useLoader } from "@react-three/fiber";
-import VenusNormalMap from "../../assets/textures/4k_venus_atmosphere.jpg";
+import JupiterNormalMap from "../../assets/textures/8k_jupiter.jpg";
 import { TextureLoader } from "three";
 import { useRef } from "react";
 import * as THREE from "three";
 
-export function Venus() {
-  const [colorMap, normalMap] = useLoader(TextureLoader, [VenusNormalMap])
-  const venusRef = useRef<THREE.Mesh>(null);
+export function Jupiter() {
+  const [colorMap, normalMap] = useLoader(TextureLoader, [JupiterNormalMap])
+  const jupiterRef = useRef<THREE.Mesh>(null);
 
   useFrame(({ clock }) => {
     const elapsedTime = clock.getElapsedTime();
-    const venus = venusRef.current;
-    if (venus) {
-      venus.rotation.y = elapsedTime / 6;
+    const jupiter = jupiterRef.current;
+    if (jupiter) {
+      jupiter.rotation.y = elapsedTime / 6;
     }
   });
 
   return (
     <>
-      <mesh ref={venusRef} position={[0, 0, 6]}>
-        <sphereGeometry args={[1, 32, 32]} />
+      <mesh ref={jupiterRef} position={[0, 0, 15]}>
+        <sphereGeometry args={[1, 35, 35]} />
         <meshStandardMaterial
           map={colorMap}
           normalMap={normalMap}

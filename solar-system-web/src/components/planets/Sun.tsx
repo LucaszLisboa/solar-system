@@ -1,30 +1,31 @@
 import { useFrame, useLoader } from "@react-three/fiber";
-import MercuryNormalMap from "../../assets/textures/8k_mercury.jpg";
+import SunNormalMap from "../../assets/textures/8k_sun.jpg";
 import { TextureLoader } from "three";
 import { useRef } from "react";
 import * as THREE from "three";
 import { OrbitControls } from "@react-three/drei";
 
-export function Mercury() {
-  const [colorMap, normalMap] = useLoader(TextureLoader, [MercuryNormalMap])
-  const mercuryRef = useRef<THREE.Mesh>(null);
+export function Sun() {
+  const [colorMap, normalMap] = useLoader(TextureLoader, [SunNormalMap])
+  const sunRef = useRef<THREE.Mesh>(null);
 
   useFrame(({ clock }) => {
     const elapsedTime = clock.getElapsedTime();
-    const mercury = mercuryRef.current;
-    if (mercury) {
-      mercury.rotation.y = elapsedTime / 6;
+    const sun = sunRef.current;
+    if (sun) {
+      sun.rotation.y = elapsedTime / 9;
     }
   });
 
   return (
     <>
-      <mesh ref={mercuryRef} position={[0, 0, 3]}>
-        <sphereGeometry args={[1, 32, 32]} />
+      <pointLight color="#f6f3ea" position={[0, 0, 0]} intensity={20} decay={0.3} />
+      <mesh ref={sunRef} position={[0, 0, 0]}>
+        <sphereGeometry args={[1, 35, 35]} />
         <meshStandardMaterial
           map={colorMap}
           normalMap={normalMap}
-          metalness={0.4}
+          metalness={0}
           roughness={0.7}
         />
         <OrbitControls enableZoom={true} enablePan={true} enableRotate={true} zoomSpeed={0.6} panSpeed={0.5} rotateSpeed={0.4} />

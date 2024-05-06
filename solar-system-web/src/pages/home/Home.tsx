@@ -9,6 +9,12 @@ import { Venus } from '../../components/planets/Venus';
 import styled from "styled-components";
 import { Stars } from "@react-three/drei";
 import { Earth } from '../../components/planets/Earth';
+import { Sun } from '../../components/planets/Sun';
+import { Mars } from '../../components/planets/Mars';
+import { Jupiter } from '../../components/planets/Jupiter';
+import { Saturn } from '../../components/planets/Saturn';
+import { Uranus } from '../../components/planets/Uranus';
+import { Neptune } from '../../components/planets/Neptune';
 
 const CanvasContainer = styled.div`
   width: 100%;
@@ -35,10 +41,16 @@ export function Home() {
             saturation={0}
             fade={true}
           />
-          <ambientLight intensity={3} />
+          <ambientLight intensity={2} />
+          <Sun />
           <Mercury />
           <Venus />
-          <Earth positionPlanet={[0, 0, 6]} positionLight={[-5, -5, 0]} />
+          <Earth positionPlanet={[0, 0, 9]} positionLight={[0, 0, 0]} />
+          <Mars />
+          <Jupiter />
+          <Saturn />
+          <Uranus />
+          <Neptune />
         </Suspense>
       </Canvas>
     </CanvasContainer>
