@@ -19,7 +19,6 @@ export function Mercury() {
 
   return (
     <>
-      <pointLight color="#f6f3ea" position={[2, 0, 6]} intensity={50} />
       <mesh ref={mercuryRef} position={[0, 0, 0]}>
         <sphereGeometry args={[1, 32, 32]} />
         <meshStandardMaterial

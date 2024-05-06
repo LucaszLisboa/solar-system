@@ -35,6 +35,7 @@ export function Home() {
             saturation={0}
             fade={true}
           />
+          <ambientLight intensity={3} />
           <Mercury />
           <Venus />
           <Earth positionPlanet={[0, 0, 6]} positionLight={[-5, -5, 0]} />

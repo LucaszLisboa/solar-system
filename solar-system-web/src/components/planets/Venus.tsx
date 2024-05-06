@@ -18,7 +18,6 @@ export function Venus() {
 
   return (
     <>
-      <pointLight color="#f6f3ea" position={[2, 0, 7]} intensity={50} />
       <mesh ref={venusRef} position={[0, 0, 3]}>
         <sphereGeometry args={[1, 32, 32]} />
         <meshStandardMaterial
@@ -27,7 +26,6 @@ export function Venus() {
           metalness={0.4}
           roughness={0.7}
         />
-        {/* <OrbitControls enableZoom={true} enablePan={true} enableRotate={true} zoomSpeed={0.6} panSpeed={0.5} rotateSpeed={0.4} /> */}
       </mesh>
     </>
   )
