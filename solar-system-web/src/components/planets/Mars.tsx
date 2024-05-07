@@ -3,6 +3,7 @@ import MarsNormalMap from "../../assets/textures/8k_mars.jpg";
 import { TextureLoader } from "three";
 import { useRef } from "react";
 import * as THREE from "three";
+import { OrbitLine } from "./OrbitLine";
 
 export function Mars() {
   const [colorMap, normalMap] = useLoader(TextureLoader, [MarsNormalMap])
@@ -18,6 +19,7 @@ export function Mars() {
 
   return (
     <>
+      <OrbitLine innerRadius={12} outerRadius={12} lineColor="#DF3434" />
       <mesh ref={marsRef} position={[0, 0, 12]}>
         <sphereGeometry args={[1, 35, 35]} />
         <meshStandardMaterial

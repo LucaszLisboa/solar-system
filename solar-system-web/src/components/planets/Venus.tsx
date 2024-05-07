@@ -3,6 +3,7 @@ import VenusNormalMap from "../../assets/textures/4k_venus_atmosphere.jpg";
 import { TextureLoader } from "three";
 import { useRef } from "react";
 import * as THREE from "three";
+import { OrbitLine } from "./OrbitLine";
 
 export function Venus() {
   const [colorMap, normalMap] = useLoader(TextureLoader, [VenusNormalMap])
@@ -18,6 +19,7 @@ export function Venus() {
 
   return (
     <>
+      <OrbitLine innerRadius={6} outerRadius={6} lineColor="yellow" />
       <mesh ref={venusRef} position={[0, 0, 6]}>
         <sphereGeometry args={[1, 32, 32]} />
         <meshStandardMaterial

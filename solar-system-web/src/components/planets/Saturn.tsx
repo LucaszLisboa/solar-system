@@ -4,6 +4,7 @@ import RingNormalMap from "../../assets/textures/saturn_ring.png";
 import { TextureLoader } from "three";
 import { useRef } from "react";
 import * as THREE from "three";
+import { OrbitLine } from "./OrbitLine";
 
 export function Saturn() {
   const [colorMap, normalMap] = useLoader(TextureLoader, [SaturnNormalMap])
@@ -21,6 +22,7 @@ export function Saturn() {
 
   return (
     <>
+      <OrbitLine innerRadius={18} outerRadius={18} lineColor="#785500" />
       <mesh ref={saturnRef} position={[0, 0, 18]}>
         <sphereGeometry args={[1, 35, 35]} />
         <meshStandardMaterial

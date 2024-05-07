@@ -3,7 +3,6 @@ import { Context } from '../../context/AuthContext';
 import { Navbar } from '../../components/navbar/Navbar';
 import "./Home.css";
 import { Canvas } from '@react-three/fiber';
-// import { Earth } from '../../components/earth/Earth';
 import { Mercury } from '../../components/planets/Mercury';
 import { Venus } from '../../components/planets/Venus';
 import styled from "styled-components";

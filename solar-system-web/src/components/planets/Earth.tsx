@@ -8,6 +8,7 @@ import EarthNormalMap from "../../assets/textures/8k_earth_normal_map.jpg";
 import EarthSpecularMap from "../../assets/textures/8k_earth_specular_map.jpg";
 import EarthCloudsMap from "../../assets/textures/8k_earth_clouds.jpg";
 import { TextureLoader } from "three";
+import { OrbitLine } from "./OrbitLine";
 
 type EarthProps = {
   positionPlanet: [number, number, number];
@@ -33,7 +34,7 @@ export function Earth({ positionPlanet, positionLight }: EarthProps) {
 
   return (
     <>
-      {/* <ambientLight intensity={3}/> */}
+      <OrbitLine innerRadius={9} outerRadius={9} lineColor="#00A5D4" />
       <pointLight color="#f6f3ea" position={positionLight} intensity={50} />
       <mesh ref={cloudsRef} position={positionPlanet}>
         <sphereGeometry args={[1.006, 64, 64]} />
