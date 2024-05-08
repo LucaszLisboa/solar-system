@@ -1,7 +1,7 @@
 import { useThree } from "@react-three/fiber";
 import { RingGeometry, LineLoop, LineBasicMaterial } from "three";
 
-type OrbitLineProps = {
+interface OrbitLineProps {
   innerRadius: number,
   outerRadius: number,
   lineColor: string,

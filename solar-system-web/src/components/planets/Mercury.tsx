@@ -3,7 +3,6 @@ import MercuryNormalMap from "../../assets/textures/8k_mercury.jpg";
 import { TextureLoader } from "three";
 import { useRef } from "react";
 import * as THREE from "three";
-import { OrbitControls } from "@react-three/drei";
 import { OrbitLine } from "./OrbitLine";
 
 export function Mercury() {
@@ -38,7 +37,6 @@ export function Mercury() {
           metalness={0.4}
           roughness={0.7}
         />
-        <OrbitControls enableZoom={true} enablePan={true} enableRotate={true} zoomSpeed={0.6} panSpeed={0.5} rotateSpeed={0.4} />
       </mesh>
     </>
   )

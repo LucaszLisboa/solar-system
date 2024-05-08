@@ -10,7 +10,7 @@ import EarthCloudsMap from "../../assets/textures/8k_earth_clouds.jpg";
 import { TextureLoader } from "three";
 import { OrbitLine } from "./OrbitLine";
 
-type EarthProps = {
+interface EarthProps {
   positionPlanet: [number, number, number];
   positionLight: [number, number, number];
 }
