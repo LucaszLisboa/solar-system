@@ -1,6 +1,7 @@
 import { useFrame, useLoader } from "@react-three/fiber";
 import { TextureLoader } from "three";
-import { useRef } from "react";
+import { MouseEventHandler, useRef, useState } from "react";
+import { useSpring, animated } from '@react-spring/three'
 import * as THREE from "three";
 import { OrbitLine } from "./OrbitLine";
 
@@ -15,16 +16,22 @@ interface PlanetProps {
   size: number;
   speedPlanetOrbit: number;
   orbitLineColor: string;
+  customClick?: MouseEventHandler;
 }
 
-export function Planet({ name, positionPlanet, planetMapTexture, size, speedPlanetOrbit, orbitLineColor }: PlanetProps) {
+export function Planet({ name, positionPlanet, planetMapTexture, size, speedPlanetOrbit, orbitLineColor, customClick }: PlanetProps) {
   const [colorMap, specularMap, cloudsMap] = useLoader(TextureLoader, [planetMapTexture, EarthSpecularMap, EarthCloudsMap])
   const [colorRingMap] = useLoader(TextureLoader, [RingTextureMap])
   const planetRef = useRef<THREE.Mesh>(null);
   const cloudsRef = useRef<THREE.Mesh>(null);
   const ringRef = useRef<THREE.Mesh>(null);
+  const [active, setActive] = useState(false);
 
   const planetPosition = new THREE.Vector3().fromArray(positionPlanet);
+
+  const { scale } = useSpring({
+    scale: active ? 1.5 : 1,
+  });
 
   useFrame(({ clock }) => {
     const elapsedTime = clock.getElapsedTime();
@@ -37,6 +44,7 @@ export function Planet({ name, positionPlanet, planetMapTexture, size, speedPlan
 
     const newX = Math.cos(elapsedTime * orbitSpeed) * orbitRadius;
     const newZ = Math.sin(elapsedTime * orbitSpeed) * orbitRadius;
+
     if (planet) {
       planet.position.set(newX, 0, newZ);
       planet.rotation.y = elapsedTime / 6;
@@ -50,11 +58,15 @@ export function Planet({ name, positionPlanet, planetMapTexture, size, speedPlan
     }
   });
 
+  const handleClick = (planetName) => {
+    setActive(!active);
+    customClick && customClick(planetName);
+  }
+
   return (
     <>
-
       <OrbitLine innerRadius={positionPlanet[2]} outerRadius={positionPlanet[2]} lineColor={orbitLineColor} />
-      {name === 'Earth' && (
+      {name === 'Terra' && (
         <mesh ref={cloudsRef} position={planetPosition}>
           <sphereGeometry args={[size, 64, 64]} />
           <meshPhongMaterial
@@ -66,9 +78,9 @@ export function Planet({ name, positionPlanet, planetMapTexture, size, speedPlan
           />
         </mesh>
       )}
-      <mesh ref={planetRef} position={planetPosition}>
+      <animated.mesh ref={planetRef} position={planetPosition} onClick={() => (handleClick(name))}>
         <sphereGeometry args={[size, 64, 64]} />
-        {name === 'Earth' && (
+        {name === 'Terra' && (
           <meshPhongMaterial specularMap={specularMap} />
         )}
         <meshStandardMaterial
@@ -76,8 +88,8 @@ export function Planet({ name, positionPlanet, planetMapTexture, size, speedPlan
           metalness={0.4}
           roughness={0.7}
         />
-      </mesh>
-      {name === 'Saturn' && (
+      </animated.mesh>
+      {name === 'Saturno' && (
         <mesh ref={ringRef} position={[0, 0, 18]} rotation={[Math.PI / 2, 0, 0]}>
           <ringGeometry args={[1.1, 1.8, 128]} />
           <meshBasicMaterial

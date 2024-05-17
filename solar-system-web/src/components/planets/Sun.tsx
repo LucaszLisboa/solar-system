@@ -3,7 +3,6 @@ import SunNormalMap from "../../assets/textures/8k_sun.jpg";
 import { TextureLoader } from "three";
 import { useRef } from "react";
 import * as THREE from "three";
-import { OrbitControls } from "@react-three/drei";
 
 export function Sun() {
   const [colorMap, normalMap] = useLoader(TextureLoader, [SunNormalMap])
@@ -28,7 +27,6 @@ export function Sun() {
           metalness={0}
           roughness={0.7}
         />
-        <OrbitControls enableZoom={true} enablePan={true} enableRotate={true} zoomSpeed={0.6} panSpeed={0.5} rotateSpeed={0.4} />
       </mesh>
     </>
   )

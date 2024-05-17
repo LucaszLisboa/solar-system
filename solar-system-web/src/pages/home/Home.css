@@ -2,3 +2,7 @@
   overflow: hidden;
   color: white;
 }
+
+canvas {
+  height: 100vh;
+}

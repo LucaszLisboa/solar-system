@@ -1,14 +1,11 @@
 import { useRef } from "react";
 import { useFrame, useLoader } from "@react-three/fiber";
-// import { OrbitControls } from "@react-three/drei";
 import * as THREE from "three";
 
 import EarthDayMap from "../../assets/textures/8k_earth_daymap.jpg";
-import EarthNormalMap from "../../assets/textures/8k_earth_normal_map.jpg";
 import EarthSpecularMap from "../../assets/textures/8k_earth_specular_map.jpg";
 import EarthCloudsMap from "../../assets/textures/8k_earth_clouds.jpg";
 import { TextureLoader } from "three";
-import { OrbitLine } from "./OrbitLine";
 
 interface EarthProps {
   positionPlanet: [number, number, number];
@@ -16,7 +13,7 @@ interface EarthProps {
 }
 
 export function Earth({ positionPlanet, positionLight }: EarthProps) {
-  const [colorMap, normalMap, specularMap, cloudsMap] = useLoader(TextureLoader, [EarthDayMap, EarthNormalMap, EarthSpecularMap, EarthCloudsMap])
+  const [colorMap, specularMap, cloudsMap] = useLoader(TextureLoader, [EarthDayMap, EarthSpecularMap, EarthCloudsMap])
   const earthRef = useRef<THREE.Mesh>(null);
   const cloudsRef = useRef<THREE.Mesh>(null);
 
@@ -34,7 +31,6 @@ export function Earth({ positionPlanet, positionLight }: EarthProps) {
 
   return (
     <>
-      <OrbitLine innerRadius={9} outerRadius={9} lineColor="#00A5D4" />
       <pointLight color="#f6f3ea" position={positionLight} intensity={50} />
       <mesh ref={cloudsRef} position={positionPlanet}>
         <sphereGeometry args={[1.006, 64, 64]} />
@@ -51,11 +47,9 @@ export function Earth({ positionPlanet, positionLight }: EarthProps) {
         <meshPhongMaterial specularMap={specularMap} />
         <meshStandardMaterial
           map={colorMap}
-          normalMap={normalMap}
           metalness={0.4}
           roughness={0.7}
         />
-        {/* <OrbitControls enableZoom={true} enablePan={true} enableRotate={true} zoomSpeed={0.6} panSpeed={0.5} rotateSpeed={0.4} /> */}
       </mesh>
     </>
   );
