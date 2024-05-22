@@ -2,7 +2,7 @@ import { useContext, useState, Suspense } from 'react';
 import { Context } from '../../context/AuthContext';
 import { Navbar } from '../../components/navbar/Navbar';
 import "./Home.css";
-import { Canvas } from '@react-three/fiber';
+import { Canvas, useFrame } from '@react-three/fiber';
 import styled from "styled-components";
 import { Bounds, OrbitControls, Stars, useBounds } from "@react-three/drei";
 import { Sun } from '../../components/planets/Sun';
@@ -16,7 +16,8 @@ import SaturnTextureMap from "../../assets/textures/8k_saturn.jpg";
 import UranusTextureMap from "../../assets/textures/2k_uranus.jpg";
 import NeptuneTextureMap from "../../assets/textures/2k_neptune.jpg";
 import planetsData from "../../planetsData.json";
-import { PlanetInfoPanel } from '../../components/PlanetInfoPanel';
+import { PlanetInfoPanel } from '../../components/modalPlanetInfo/PlanetInfoPanel';
+import { Vector3 } from 'three';
 
 const CanvasContainer = styled.div`
   width: 100%;
@@ -42,12 +43,12 @@ export function Home() {
     const response = planetsData.planets;
     const planetInfo = response.find(planet => planet.name === planetName);
     setSelectedPlanetInfo(planetInfo);
-    console.log("Planet Info: ", planetInfo);
   }
 
   return (
     <CanvasContainer className="canvasContainer">
       <Navbar user={context?.user?.email} />
+      <PlanetInfoPanel planetInfo={selectedPlanetInfo} />
       <Canvas>
         <Suspense fallback={null}>
           <Stars
@@ -79,16 +80,29 @@ export function Home() {
         </Suspense>
         <OrbitControls makeDefault enableZoom={true} enablePan={true} enableRotate={true} zoomSpeed={1.2} panSpeed={0.5} rotateSpeed={0.5} />
       </Canvas>
-      <PlanetInfoPanel planetInfo={selectedPlanetInfo} />
     </CanvasContainer>
   )
 }
 
-function SelectToZoom({ children }: { children: React.ReactNode }) {
+function SelectToZoom({ children }) {
   const api = useBounds();
+  const [planetRef, setPlanetRef] = useState(null);
+
+  useFrame(({ camera }) => {
+    if (planetRef) {
+      const planetPosition = new Vector3();
+      planetRef.getWorldPosition(planetPosition);
+      camera.position.lerp(new Vector3(planetPosition.x + 0, planetPosition.y + 1, planetPosition.z + 2), 0.05);
+      camera.lookAt(planetPosition);
+    }
+  });
 
   return (
-    <group onClick={(e) => (e.stopPropagation(), e.delta <= 2 && api.refresh(e.object).fit())} onPointerMissed={(e) => e.button === 0 && api.refresh().fit()}>
+    <group onClick={(e) => {
+      e.stopPropagation();
+      e.delta <= 2 && api.refresh(e.object).fit();
+      setPlanetRef(e.object);
+    }} onPointerMissed={(e) => e.button === 0 && api.refresh().fit()}>
       {children}
     </group>
   )

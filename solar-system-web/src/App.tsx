@@ -25,10 +25,6 @@ function App() {
       path: '/home',
       element: <Protected><Home /></Protected>
     },
-    // {
-    //   path: '/home/:planet',
-    //   element: <Protected><Canvas><Earth positionPlanet={[-0.7, 0, 3.3]} positionLight={[2, 0, 6]} /></Canvas></Protected>
-    // }
   ])
 
   return (

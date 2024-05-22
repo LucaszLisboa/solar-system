@@ -5,7 +5,6 @@ import { Suspense } from "react";
 import { Earth } from "../../components/planets/Earth";
 import LoginSection from "../../components/loginSection/LoginSection";
 import { Stars } from "@react-three/drei";
-// import { TopSection } from "./components/topSection";
 
 const CanvasContainer = styled.div`
   width: 100%;

@@ -1,0 +1,17 @@
+.planetInfoPanel {
+  z-index: 1;
+  font-family: 'Open Sans', sans-serif;
+  overflow-y: scroll;
+  scrollbar-width: none;
+  font-size: 16px;
+  position: absolute;
+  width: 25%;
+  height: 65%;
+  left: 1%;
+  top: 18%;
+  padding: 1%;
+  color: white;
+  background-color: rgba(43, 43, 43, 0.877);
+  border-radius: 5px;
+  transition: all 0.5s ease;
+}
