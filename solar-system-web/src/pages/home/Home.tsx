@@ -29,14 +29,14 @@ export function Home() {
   const [selectedPlanetInfo, setSelectedPlanetInfo] = useState(null);
 
   const planetsDataRender = [
-    { name: 'Mercúrio', position: [0, 0, 3], texture: MercuryTextureMap, size: 1, speedOrbit: 1, orbitColor: "gray" },
-    { name: 'Vênus', position: [0, 0, 6], texture: VenusTextureMap, size: 1, speedOrbit: 0.08, orbitColor: "yellow" },
-    { name: 'Terra', position: [0, 0, 9], texture: EarthTextureMap, size: 1, speedOrbit: 0.07, orbitColor: "#00A5D4" },
-    { name: 'Marte', position: [0, 0, 12], texture: MarsTextureMap, size: 1, speedOrbit: 0.06, orbitColor: "#DF3434" },
-    { name: 'Júpiter', position: [0, 0, 15], texture: JupiterTextureMap, size: 1, speedOrbit: 0.05, orbitColor: "#DD8900" },
-    { name: 'Saturno', position: [0, 0, 18], texture: SaturnTextureMap, size: 1, speedOrbit: 0.03, orbitColor: "#785500" },
-    { name: 'Urano', position: [0, 0, 21], texture: UranusTextureMap, size: 1, speedOrbit: 0.01, orbitColor: "#90E7FF" },
-    { name: 'Netuno', position: [0, 0, 30], texture: NeptuneTextureMap, size: 1, speedOrbit: 0.008, orbitColor: "#2C5FC3" }
+    { name: 'Mercúrio', position: [0, 0, 28], texture: MercuryTextureMap, size: 3.2, speedOrbit: 1, orbitColor: "gray" },
+    { name: 'Vênus', position: [0, 0, 44], texture: VenusTextureMap, size: 5.8, speedOrbit: 0.4, orbitColor: "yellow" },
+    { name: 'Terra', position: [0, 0, 62], texture: EarthTextureMap, size: 6, speedOrbit: 0.35, orbitColor: "#00A5D4" },
+    { name: 'Marte', position: [0, 0, 78], texture: MarsTextureMap, size: 4, speedOrbit: 0.3, orbitColor: "#DF3434" },
+    { name: 'Júpiter', position: [0, 0, 100], texture: JupiterTextureMap, size: 12, speedOrbit: 0.07, orbitColor: "#DD8900" },
+    { name: 'Saturno', position: [0, 0, 138], texture: SaturnTextureMap, size: 10, speedOrbit: 0.03, orbitColor: "#785500" },
+    { name: 'Urano', position: [0, 0, 176], texture: UranusTextureMap, size: 7, speedOrbit: 0.025, orbitColor: "#90E7FF" },
+    { name: 'Netuno', position: [0, 0, 200], texture: NeptuneTextureMap, size: 7, speedOrbit: 0.009, orbitColor: "#2C5FC3" }
   ]
 
   const handlePlanetClick = (planetName) => {
@@ -92,7 +92,8 @@ function SelectToZoom({ children }) {
     if (planetRef) {
       const planetPosition = new Vector3();
       planetRef.getWorldPosition(planetPosition);
-      camera.position.lerp(new Vector3(planetPosition.x + 0, planetPosition.y + 1, planetPosition.z + 2), 0.05);
+      //zoom tem que ser configurado de acordo com o tamanho do planeta
+      // camera.position.lerp(planetPosition.clone().add(new Vector3(1, 4, 20)), 0.1);
       camera.lookAt(planetPosition);
     }
   });

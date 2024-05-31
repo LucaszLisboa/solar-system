@@ -33,7 +33,7 @@ export function Earth({ positionPlanet, positionLight }: EarthProps) {
     <>
       <pointLight color="#f6f3ea" position={positionLight} intensity={50} />
       <mesh ref={cloudsRef} position={positionPlanet}>
-        <sphereGeometry args={[1.006, 64, 64]} />
+        <sphereGeometry args={[0.908, 64, 64]} />
         <meshPhongMaterial
           map={cloudsMap}
           opacity={0.4}
@@ -43,7 +43,7 @@ export function Earth({ positionPlanet, positionLight }: EarthProps) {
         />
       </mesh>
       <mesh ref={earthRef} position={positionPlanet}>
-        <sphereGeometry args={[1, 64, 64]} />
+        <sphereGeometry args={[0.9, 64, 64]} />
         <meshPhongMaterial specularMap={specularMap} />
         <meshStandardMaterial
           map={colorMap}

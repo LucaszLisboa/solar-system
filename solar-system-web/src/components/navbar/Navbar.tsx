@@ -1,5 +1,5 @@
 import { signOut, getAuth } from "firebase/auth";
-import { Link } from "react-router-dom";
+import { NavLink } from "react-router-dom";
 import "./Navbar.css";
 
 interface NavbarProps {
@@ -24,9 +24,9 @@ export function Navbar({ user }: NavbarProps) {
   return (
     <nav className="navbar">
       <ul className="links">
-        <li><Link to="/home">Home</Link></li>
-        <li><Link to="/quizz">Quizz</Link></li>
-        <li><Link to="/login">Login</Link></li>
+        <li><NavLink to="/home" className={({ isActive, isPending }) => isPending ? "pending" : isActive ? "active" : ""}>Home</NavLink></li>
+        <li><NavLink to="/quizz">Quizz</NavLink></li>
+        <li><NavLink to="/login">Picture of Day NASA</NavLink></li>
       </ul>
       <ul className="links">
         <li>Olá {user}</li>

@@ -90,8 +90,8 @@ export function Planet({ name, positionPlanet, planetMapTexture, size, speedPlan
         />
       </animated.mesh>
       {name === 'Saturno' && (
-        <mesh ref={ringRef} position={[0, 0, 18]} rotation={[Math.PI / 2, 0, 0]}>
-          <ringGeometry args={[1.1, 1.8, 128]} />
+        <mesh ref={ringRef} position={[0, 0, 138]} rotation={[Math.PI / 2, 0, 0]}>
+          <ringGeometry args={[1.1, size + 9, 128]} />
           <meshBasicMaterial
             map={colorRingMap}
             side={THREE.DoubleSide}

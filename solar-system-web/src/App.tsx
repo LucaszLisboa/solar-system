@@ -5,9 +5,10 @@ import { AuthContext } from './context/AuthContext';
 import { Protected } from './pages/Protected';
 import './App.css';
 import { Home } from './pages/home/Home';
+import { Quizz } from './pages/quizz/Quizz';
 
 
-function App() {
+export function App() {
   const router = createBrowserRouter([
     {
       path: '/',
@@ -25,6 +26,14 @@ function App() {
       path: '/home',
       element: <Protected><Home /></Protected>
     },
+    {
+      path: '/quizz',
+      element: <Protected><Quizz /></Protected>
+    },
+    {
+      path: '/pictureOfDay',
+      element: <Protected><Quizz /></Protected>
+    }
   ])
 
   return (
@@ -35,5 +44,3 @@ function App() {
     </div>
   );
 }
-
-export default App;

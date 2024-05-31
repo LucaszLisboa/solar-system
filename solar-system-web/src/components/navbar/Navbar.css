@@ -1,9 +1,13 @@
 .navbar {
   color: white;
-  background-color: #282c34;
+  /* background-color: #181818; */
+  position: fixed;
+  width: 100%;
+  opacity: 1;
   display: flex;
   justify-content: space-between;
   padding-right: 2rem;
+  z-index: 1;
 }
 
 .links {
@@ -23,6 +27,10 @@ a {
 }
 
 a:hover {
-  color: #61dafb;
+  color: #ff6822;
   transition: all 0.2s ease-in-out;
+}
+
+.active {
+  color: #ff9361;
 }

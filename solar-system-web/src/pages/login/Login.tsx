@@ -13,22 +13,24 @@ const CanvasContainer = styled.div`
 
 export function Login() {
   return (
-    <CanvasContainer>
+    <>
+      <CanvasContainer>
+        <Canvas>
+          <Suspense fallback={null}>
+            <Stars
+              radius={300}
+              depth={60}
+              count={12000}
+              factor={8}
+              saturation={0}
+              fade={true}
+            />
+            <Earth positionPlanet={[-0.7, 0, 3.3]} positionLight={[2, 0, 6]} />
+          </Suspense>
+        </Canvas>
+      </CanvasContainer>
       <LoginSection />
-      <Canvas>
-        <Suspense fallback={null}>
-          <Stars
-            radius={300}
-            depth={60}
-            count={12000}
-            factor={8}
-            saturation={0}
-            fade={true}
-          />
-          <Earth positionPlanet={[-0.7, 0, 3.3]} positionLight={[2, 0, 6]} />
-        </Suspense>
-      </Canvas>
-    </CanvasContainer>
+    </>
   );
 }
 

@@ -20,7 +20,7 @@ export function Sun() {
     <>
       <pointLight color="#f6f3ea" position={[0, 0, 0]} intensity={20} decay={0.3} />
       <mesh ref={sunRef} position={[0, 0, 0]}>
-        <sphereGeometry args={[1, 35, 35]} />
+        <sphereGeometry args={[16, 35, 35]} />
         <meshStandardMaterial
           map={colorMap}
           normalMap={normalMap}
