@@ -6,6 +6,7 @@ import { Protected } from './pages/Protected';
 import './App.css';
 import { Home } from './pages/home/Home';
 import { Quizz } from './pages/quizz/Quizz';
+import 'bootstrap/dist/css/bootstrap.min.css';
 
 
 export function App() {

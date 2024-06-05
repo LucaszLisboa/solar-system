@@ -13,7 +13,7 @@ const CanvasContainer = styled.div`
 
 export function Login() {
   return (
-    <>
+    <div className="d-flex">
       <CanvasContainer>
         <Canvas>
           <Suspense fallback={null}>
@@ -30,7 +30,7 @@ export function Login() {
         </Canvas>
       </CanvasContainer>
       <LoginSection />
-    </>
+    </div>
   );
 }
 

@@ -12,8 +12,7 @@ const CanvasContainer = styled.div`
 
 export function Signup() {
   return (
-    <CanvasContainer>
-      <SignupSection />
+    <CanvasContainer className="d-flex">
       <Canvas>
         <Suspense fallback={null}>
           <Stars
@@ -27,6 +26,7 @@ export function Signup() {
           <Earth positionPlanet={[-0.7, 0, 3.3]} positionLight={[2, 0, 6]} />
         </Suspense>
       </Canvas>
+      <SignupSection />
     </CanvasContainer>
   )
 }
