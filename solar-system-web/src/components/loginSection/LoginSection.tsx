@@ -1,27 +1,17 @@
 import React, { useState } from "react";
-import { signInWithEmailAndPassword } from 'firebase/auth';
-import { auth } from '../../firebase';
-import { NavLink, useNavigate } from 'react-router-dom';
+import { NavLink } from 'react-router-dom';
 import './LoginSection.css';
-import { Container, Card, Form, Button } from 'react-bootstrap';
+import { Container, Card, Form, Button, Alert, Spinner } from 'react-bootstrap';
+import { useAuth } from "../auth/useAuth";
 
 export default function LoginSection() {
-  const navigate = useNavigate();
   const [email, setEmail] = useState("");
   const [password, setPassword] = useState("");
+  const { loginWithEmailAndPassword, loginWithGoogle, error, loading } = useAuth();
 
   const onLogin = (e: React.FormEvent<HTMLFormElement>) => {
     e.preventDefault();
-    signInWithEmailAndPassword(auth, email, password)
-      .then(() => {
-        navigate("/home");
-      })
-      .catch((error) => {
-        const errorCode = error.code;
-        const errorMessage = error.message;
-        console.log(errorCode, errorMessage)
-        //abrir modal de erro
-      })
+    loginWithEmailAndPassword(email, password);
   }
 
   return (
@@ -30,6 +20,7 @@ export default function LoginSection() {
         <Card.Body>
           <Card.Title className="text-center">Space Travel</Card.Title>
           <Card.Text className="text-center">Por favor, faça login na sua conta</Card.Text>
+          {error && <Alert variant="danger">{error}</Alert>}
           <Form onSubmit={onLogin}>
             <Form.Group controlId="formBasicEmail">
               <Form.Control
@@ -37,6 +28,7 @@ export default function LoginSection() {
                 placeholder="Email"
                 onChange={(e) => setEmail(e.target.value)}
                 required
+                disabled={loading}
               />
             </Form.Group>
             <Form.Group controlId="formBasicPassword" className="mt-3">
@@ -45,14 +37,15 @@ export default function LoginSection() {
                 placeholder="Senha"
                 onChange={(e) => setPassword(e.target.value)}
                 required
+                disabled={loading}
               />
             </Form.Group>
-            <Button variant="primary" type="submit" className="btn-block w-100 mt-4">
-              Entrar
+            <Button variant="primary" type="submit" className="btn-block w-100 mt-4" disabled={loading}>
+              {loading ? <Spinner animation="border" size="sm" /> : 'Entrar'}
             </Button>
           </Form>
           <hr className="my-4 hr-text" data-content="OU" />
-          <Button variant="light" className="btn-block d-flex align-items-center justify-content-center w-100 gap-2">
+          <Button variant="light" className="btn-block d-flex align-items-center justify-content-center w-100 gap-2" onClick={loginWithGoogle} disabled={loading}>
             <img className="mr-2" src="https://img.icons8.com/color/48/000000/google-logo.png" alt="Google Logo" width="20" />
             Entrar com Google
           </Button>

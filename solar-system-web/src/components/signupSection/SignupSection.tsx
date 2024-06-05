@@ -1,28 +1,19 @@
 import React, { useState } from "react";
-import { NavLink, useNavigate } from 'react-router-dom';
-import { createUserWithEmailAndPassword } from 'firebase/auth';
-import { auth } from '../../firebase';
+import { NavLink } from 'react-router-dom';
+import { Container, Card, Form, Button, Alert, Spinner } from 'react-bootstrap';
+import { useAuth } from "../auth/useAuth";
 import './SignupSection.css';
-import { Container, Card, Form, Button } from 'react-bootstrap';
 
 export default function SignupSection() {
-  const navigate = useNavigate();
 
-  const [user, setUser] = useState("");
+  // const [user, setUser] = useState("");
   const [email, setEmail] = useState("");
   const [password, setPassword] = useState("");
+  const { registerWithEmailAndPassword, error, loading } = useAuth();
 
   const onSubmit = async (e: React.FormEvent<HTMLFormElement>) => {
     e.preventDefault();
-    await createUserWithEmailAndPassword(auth, email, password)
-      .then(() => {
-        navigate("/")
-      })
-      .catch((error) => {
-        const errorCode = error.code;
-        const errorMessage = error.message;
-        console.log(errorCode, errorMessage);
-      });
+    registerWithEmailAndPassword(email, password);
   }
 
   return (
@@ -31,6 +22,7 @@ export default function SignupSection() {
         <Card.Body>
           <Card.Title className="text-center">Space Travel</Card.Title>
           <Card.Text className="text-center">Por favor, registre sua conta</Card.Text>
+          {error && <Alert variant="danger">{error}</Alert>}
           <Form onSubmit={onSubmit}>
             {/* <Form.Group controlId="formBasicUser">
               <Form.Control
@@ -48,6 +40,7 @@ export default function SignupSection() {
                 value={email}
                 onChange={(e) => setEmail(e.target.value)}
                 required
+                disabled={loading}
               />
             </Form.Group>
             <Form.Group controlId="formBasicPassword" className="mt-3">
@@ -57,10 +50,11 @@ export default function SignupSection() {
                 value={password}
                 onChange={(e) => setPassword(e.target.value)}
                 required
+                disabled={loading}
               />
             </Form.Group>
-            <Button variant="primary" type="submit" className="btn-block w-100 mt-4">
-              Registrar
+            <Button variant="primary" type="submit" className="btn-block w-100 mt-4" disabled={loading}>
+              {loading ? <Spinner animation="border" size="sm" /> : 'Registrar'}
             </Button>
           </Form>
           <Card.Text className="text-center mt-3">
