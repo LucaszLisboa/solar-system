@@ -1,11 +1,26 @@
 import { useEffect, useState } from "react";
 import "./PlanetInfoPanel.css";
+import { Button, Container } from 'react-bootstrap';
 
-export function PlanetInfoPanel({ planetInfo }) {
+interface PlanetInfoPanelProps {
+  planetInfo: {
+    name: string;
+    resume: string;
+    features: {
+      Diameter: string;
+      gravity: string;
+      orbitalPeriod: string[];
+      sunDistance: string;
+      temperature: string;
+    }
+  } | null;
+}
+
+export function PlanetInfoPanel({ planetInfo }: PlanetInfoPanelProps) {
   const [showPlanetInfo, setShowPlanetInfo] = useState(false);
 
   useEffect(() => {
-    setShowPlanetInfo(planetInfo);
+    setShowPlanetInfo(planetInfo !== null);
     console.log(planetInfo);
   }, [planetInfo]);
 
@@ -15,7 +30,7 @@ export function PlanetInfoPanel({ planetInfo }) {
   }
 
   return (
-    <>
+    <Container>
       {showPlanetInfo && (
         <div className="planetInfoPanel">
           <h1>{planetInfo?.name}</h1>
@@ -26,9 +41,10 @@ export function PlanetInfoPanel({ planetInfo }) {
           <p>Período Orbital: {planetInfo?.features.orbitalPeriod[0]}</p>
           <p>Distância do Sol: {planetInfo?.features.sunDistance}</p>
           <p>Temperatura: {planetInfo?.features.temperature}</p>
-          <button onClick={handleClose}>Close</button>
+          <Button onClick={handleClose}>Fechar</Button>
         </div>
+
       )}
-    </>
+    </Container>
   )
 }

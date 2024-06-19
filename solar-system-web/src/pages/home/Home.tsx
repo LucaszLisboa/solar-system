@@ -39,7 +39,7 @@ export function Home() {
     { name: 'Netuno', position: [0, 0, 200], texture: NeptuneTextureMap, size: 7, speedOrbit: 0.009, orbitColor: "#2C5FC3" }
   ]
 
-  const handlePlanetClick = (planetName) => {
+  const handlePlanetClick = (planetName: string) => {
     const response = planetsData.planets;
     const planetInfo = response.find(planet => planet.name === planetName);
     setSelectedPlanetInfo(planetInfo);
@@ -78,7 +78,7 @@ export function Home() {
             </SelectToZoom>
           </Bounds>
         </Suspense>
-        <OrbitControls makeDefault enableZoom={true} enablePan={true} enableRotate={true} zoomSpeed={1.2} panSpeed={0.5} rotateSpeed={0.5} />
+        <OrbitControls enableZoom={true} enablePan={true} enableRotate={true} zoomSpeed={1.2} panSpeed={0.5} rotateSpeed={0.5} />
       </Canvas>
     </CanvasContainer>
   )

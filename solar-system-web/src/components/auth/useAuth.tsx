@@ -26,7 +26,7 @@ export const useAuth = () => {
     try {
       const result = await signInWithPopup(auth, provider);
       const credential = GoogleAuthProvider.credentialFromResult(result);
-      const token = credential.accessToken;
+      const token = credential?.accessToken;
       const user = result.user;
       navigate('/home');
     } catch (err) {

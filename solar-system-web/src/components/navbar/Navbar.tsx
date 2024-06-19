@@ -37,14 +37,14 @@ export function Navbar({ user }: NavbarProps) {
           </NavbarComponent.Brand>
           <Nav.Link as={NavLink} to="/home">Home</Nav.Link>
           <Nav.Link as={NavLink} to="/quizz">Quizz</Nav.Link>
-          <Nav.Link as={NavLink} to="/login">Picture of Day NASA</Nav.Link>
+          <Nav.Link as={NavLink} to="/pictureOfDay">Picture of Day NASA</Nav.Link>
         </Nav>
         <Nav className="d-flex align-items-center flex-row gap-3">
           <Nav.Item>
             <span>Olá {user}</span>
           </Nav.Item>
           <Nav.Item>
-            <Button variant="primary" onClick={handleSignOut}>Sair</Button>
+            <Button variant="secondary" onClick={handleSignOut}>Sair</Button>
           </Nav.Item>
         </Nav>
       </Container>

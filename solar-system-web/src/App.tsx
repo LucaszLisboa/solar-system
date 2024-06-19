@@ -7,6 +7,7 @@ import './App.css';
 import { Home } from './pages/home/Home';
 import { Quizz } from './pages/quizz/Quizz';
 import 'bootstrap/dist/css/bootstrap.min.css';
+import { PictureOfDay } from './pages/pictureOfDay/PictureOfDay';
 
 
 export function App() {
@@ -33,7 +34,7 @@ export function App() {
     },
     {
       path: '/pictureOfDay',
-      element: <Protected><Quizz /></Protected>
+      element: <Protected><PictureOfDay /></Protected>
     }
   ])
 
