@@ -41,10 +41,10 @@ export function Navbar({ user }: NavbarProps) {
         </Nav>
         <Nav className="d-flex align-items-center flex-row gap-3">
           <Nav.Item>
-            <span>Olá {user}</span>
+            <span>Olá <b>{user}</b></span>
           </Nav.Item>
           <Nav.Item>
-            <Button variant="secondary" onClick={handleSignOut}>Sair</Button>
+            <Button variant="primary" onClick={handleSignOut}>Sair</Button>
           </Nav.Item>
         </Nav>
       </Container>

@@ -14,7 +14,7 @@ export const useAuth = () => {
     try {
       await signInWithEmailAndPassword(auth, email, password);
       navigate('/home');
-    } catch (err) {
+    } catch (err: any) {
       setError(err.message);
     } finally {
       setLoading(false);
@@ -29,7 +29,7 @@ export const useAuth = () => {
       const token = credential?.accessToken;
       const user = result.user;
       navigate('/home');
-    } catch (err) {
+    } catch (err: any) {
       setError(err.message);
     } finally {
       setLoading(false);
@@ -41,7 +41,7 @@ export const useAuth = () => {
     try {
       await createUserWithEmailAndPassword(auth, email, password);
       navigate('/');
-    } catch (err) {
+    } catch (err: any) {
       setError(err.message);
     } finally {
       setLoading(false);

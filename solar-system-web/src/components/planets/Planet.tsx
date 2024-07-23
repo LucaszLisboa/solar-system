@@ -1,7 +1,7 @@
 import { useFrame, useLoader } from "@react-three/fiber";
 import { TextureLoader } from "three";
 import { MouseEventHandler, useRef, useState } from "react";
-import { useSpring, animated } from '@react-spring/three'
+import { animated } from '@react-spring/three'
 import * as THREE from "three";
 import { OrbitLine } from "./OrbitLine";
 
@@ -29,9 +29,9 @@ export function Planet({ name, positionPlanet, planetMapTexture, size, speedPlan
 
   const planetPosition = new THREE.Vector3().fromArray(positionPlanet);
 
-  const { scale } = useSpring({
-    scale: active ? 1.5 : 1,
-  });
+  // const { scale } = useSpring({
+  //   scale: active ? 1.5 : 1,
+  // });
 
   useFrame(({ clock }) => {
     const elapsedTime = clock.getElapsedTime();
@@ -58,7 +58,7 @@ export function Planet({ name, positionPlanet, planetMapTexture, size, speedPlan
     }
   });
 
-  const handleClick = (planetName) => {
+  const handleClick = (planetName: any) => {
     setActive(!active);
     customClick && customClick(planetName);
   }

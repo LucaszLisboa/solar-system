@@ -4,7 +4,7 @@ import { Context } from "../../context/AuthContext";
 import { useContext } from "react";
 import { YoutubeEmbed } from "./YoutubeEmbed";
 import { format } from "date-fns";
-import { ptBR } from 'date-fns/locale';
+// import { ptBR } from 'date-fns/locale';
 import styled from "styled-components";
 import { Spinner } from "react-bootstrap";
 
@@ -18,7 +18,7 @@ const apiKey = process.env.NASA_API_KEY
 
 export function PictureOfDay() {
   const context = useContext(Context);
-  const [pictureOfDay, setPictureOfDay] = useState("");
+  const [pictureOfDay, setPictureOfDay] = useState(Object);
   const [formattedDate, setFormattedDate] = useState("");
   const [loading, setLoading] = useState(true)
 

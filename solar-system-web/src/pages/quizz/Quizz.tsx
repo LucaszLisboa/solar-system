@@ -1,4 +1,4 @@
-import React, { useContext } from "react"
+import { useContext } from "react"
 import styled from "styled-components";
 import { Navbar } from "../../components/navbar/Navbar";
 import { Context } from "../../context/AuthContext";

@@ -84,9 +84,9 @@ export function Home() {
   )
 }
 
-function SelectToZoom({ children }) {
+function SelectToZoom({ children }: { children: React.ReactNode }) {
   const api = useBounds();
-  const [planetRef, setPlanetRef] = useState(null);
+  const [planetRef, setPlanetRef] = useState<any>(null);
 
   useFrame(({ camera }) => {
     if (planetRef) {
@@ -95,6 +95,8 @@ function SelectToZoom({ children }) {
       //zoom tem que ser configurado de acordo com o tamanho do planeta
       // camera.position.lerp(planetPosition.clone().add(new Vector3(1, 4, 20)), 0.1);
       camera.lookAt(planetPosition);
+    } else {
+      // Handle the case when planetRef is null
     }
   });
 
