@@ -15,7 +15,7 @@ export default function LoginSection() {
   }
 
   return (
-    <Container className="d-flex align-items-center position-absolute">
+    <Container className="d-flex align-items-center position-absolute justify-content-end">
       <Card className="p-4 w-100" style={{ maxWidth: '500px' }}>
         <Card.Body>
           <Card.Title className="text-center">Space Travel</Card.Title>

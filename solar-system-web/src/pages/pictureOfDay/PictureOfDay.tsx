@@ -29,13 +29,11 @@ export function PictureOfDay() {
       .then((data) => {
         setPictureOfDay(data)
         const date = new Date(data.date);
-        setFormattedDate(format(date, "dd MMMM yyyy", { locale: ptBR }))
+        setFormattedDate(format(date, "dd MMMM yyyy"))
         setLoading(false)
       })
       .catch((error) => console.error("Error:", error))
   }, [])
-
-  console.log(pictureOfDay)
 
   return (
     <CanvasContainer className="canvasContainer">
