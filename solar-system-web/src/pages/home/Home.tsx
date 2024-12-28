@@ -26,7 +26,7 @@ const CanvasContainer = styled.div`
 
 export function Home() {
   const context = useContext(Context);
-  const [selectedPlanetInfo, setSelectedPlanetInfo] = useState(null);
+  const [selectedPlanetInfo, setSelectedPlanetInfo] = useState<any>(null);
   const [velocidadeTranslacao, setVelocidadeTranslacao] = useState(0.01);
 
   const planetsDataRender = [
@@ -43,11 +43,14 @@ export function Home() {
   const handlePlanetClick = (planetName: string) => {
     const response = planetsData.planets;
     const planetInfo = response.find(planet => planet.name === planetName);
-    setSelectedPlanetInfo(planetInfo);
+    if(planetInfo){
+      setSelectedPlanetInfo(planetInfo);
+    }
   }
 
   const handlePlanetClose = () => {
     // setar camera para o sol
+    setSelectedPlanetInfo(null);
   }
 
   return (

@@ -1,6 +1,6 @@
 import { signOut, getAuth } from "firebase/auth";
 import { NavLink } from "react-router-dom";
-import { Container, Nav, Navbar as NavbarComponent, Button } from "react-bootstrap";
+import { Container, Nav, Navbar as NavbarComponent } from "react-bootstrap";
 import "./Navbar.css";
 
 interface NavbarProps {
@@ -44,7 +44,7 @@ export function Navbar({ user }: NavbarProps) {
             <span>Olá <b>{user}</b></span>
           </Nav.Item>
           <Nav.Item>
-            <Button variant="primary" onClick={handleSignOut}>Sair</Button>
+            <button onClick={handleSignOut}>Sair</button>
           </Nav.Item>
         </Nav>
       </Container>
