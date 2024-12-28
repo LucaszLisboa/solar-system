@@ -14,9 +14,10 @@ interface PlanetInfoPanelProps {
       temperature: string;
     }
   } | null;
+  onClose: () => void;
 }
 
-export function PlanetInfoPanel({ planetInfo }: PlanetInfoPanelProps) {
+export function PlanetInfoPanel({ planetInfo, onClose}: PlanetInfoPanelProps) {
   const [showPlanetInfo, setShowPlanetInfo] = useState(false);
 
   useEffect(() => {
@@ -26,7 +27,7 @@ export function PlanetInfoPanel({ planetInfo }: PlanetInfoPanelProps) {
 
   const handleClose = () => {
     setShowPlanetInfo(false);
-    // camera deve voltar ao normal
+    onClose();
   }
 
   return (
