@@ -2,8 +2,6 @@ import { useContext } from "react"
 import styled from "styled-components";
 import { Navbar } from "../../components/navbar/Navbar";
 import { Context } from "../../context/AuthContext";
-import { Button } from "react-bootstrap";
-
 
 const CanvasContainer = styled.div`
   width: 100%;
@@ -18,7 +16,7 @@ export function Quizz() {
       <Navbar user={context?.user?.email} />
       <h1>Quizz</h1>
       <p>Clique no botão abaixo para começar</p>
-      <Button variant="primary">Iniciar Quiz</Button>
+      <button>Iniciar Quiz</button>
     </CanvasContainer>
   )
 }
