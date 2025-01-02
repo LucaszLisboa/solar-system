@@ -24,7 +24,6 @@ export const useAuth = () => {
   const loginWithGoogle = async () => {
     setLoading(true);
     try {
-      await signInWithPopup(auth, provider);
       const result = await signInWithPopup(auth, provider);
       GoogleAuthProvider.credentialFromResult(result);
       // const credential = GoogleAuthProvider.credentialFromResult(result);
