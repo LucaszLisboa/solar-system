@@ -26,7 +26,8 @@ const CanvasContainer = styled.div`
 
 export function Home() {
   const context = useContext(Context);
-  const [selectedPlanetInfo, setSelectedPlanetInfo] = useState(null);
+  const [selectedPlanetInfo, setSelectedPlanetInfo] = useState<any>(null);
+  const [velocidadeTranslacao, setVelocidadeTranslacao] = useState(0.01);
 
   const planetsDataRender = [
     { name: 'Mercúrio', position: [0, 0, 28], texture: MercuryTextureMap, size: 3.2, speedOrbit: 1, orbitColor: "gray" },
@@ -42,13 +43,24 @@ export function Home() {
   const handlePlanetClick = (planetName: string) => {
     const response = planetsData.planets;
     const planetInfo = response.find(planet => planet.name === planetName);
-    setSelectedPlanetInfo(planetInfo);
+    if(planetInfo){
+      setSelectedPlanetInfo(planetInfo);
+    }
+  }
+
+  const handlePlanetClose = () => {
+    // setar camera para o sol
+    setSelectedPlanetInfo(null);
   }
 
   return (
     <CanvasContainer className="canvasContainer">
       <Navbar user={context?.user?.email} />
-      <PlanetInfoPanel planetInfo={selectedPlanetInfo} />
+      <PlanetInfoPanel planetInfo={selectedPlanetInfo} onClose={handlePlanetClose} />
+      <div className="velocidadeTranslacao">
+        <label>Velocidade {velocidadeTranslacao}</label>
+        <input type="range" min="0.01" max="10" step="0.001" value={velocidadeTranslacao} onChange={(e) => setVelocidadeTranslacao(Number(e.target.value))} className='inputRange' />
+      </div>
       <Canvas>
         <Suspense fallback={null}>
           <Stars
@@ -70,7 +82,7 @@ export function Home() {
                   positionPlanet={planet.position}
                   planetMapTexture={planet.texture}
                   size={planet.size}
-                  speedPlanetOrbit={planet.speedOrbit}
+                  speedPlanetOrbit={planet.speedOrbit * velocidadeTranslacao} 
                   orbitLineColor={planet.orbitColor}
                   customClick={() => handlePlanetClick(planet.name)}
                 />

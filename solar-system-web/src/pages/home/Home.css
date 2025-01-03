@@ -6,3 +6,21 @@
 canvas {
   height: 100vh;
 }
+
+.velocidadeTranslacao {
+  position: absolute;
+  background-color: gray;
+  width: 200px;
+  height: auto;
+  bottom: 1%;
+  right: 0.5%;
+  z-index: 1;
+  border-radius: 5px;
+  padding: 10px;
+}
+
+.inputRange {
+  width: 100%;
+  accent-color: white;
+
+}

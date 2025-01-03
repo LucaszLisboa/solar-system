@@ -1,0 +1,9 @@
+.correct-answer{
+  /* background-color:rgb(9, 255, 0); */
+  font-weight: bold;
+  font-size: 1.2rem;
+}
+
+.feedback {
+  font-size: 1.1rem;
+}
