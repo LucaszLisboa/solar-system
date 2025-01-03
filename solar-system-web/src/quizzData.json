@@ -1,0 +1,67 @@
+[
+  {
+    "question": "Qual é o maior planeta do Sistema Solar?",
+    "options": ["Júpiter", "Saturno", "Terra", "Netuno"],
+    "answer": "Júpiter",
+    "feedback": "Júpiter é o maior planeta do Sistema Solar, com um diâmetro cerca de 11 vezes maior que o da Terra."
+  },
+  {
+    "question": "Qual é a estrela mais próxima da Terra?",
+    "options": ["Alpha Centauri", "Betelgeuse", "Sirius", "Sol"],
+    "answer": "Sol",
+    "feedback": "O Sol é a estrela mais próxima da Terra e é responsável por fornecer luz e calor para sustentar a vida no nosso planeta."
+  },
+  {
+    "question": "Qual planeta é conhecido como o 'Planeta Vermelho'?",
+    "options": ["Vênus", "Marte", "Júpiter", "Mercúrio"],
+    "answer": "Marte",
+    "feedback": "Marte é conhecido como o 'Planeta Vermelho' devido à presença de óxido de ferro (ferrugem) em sua superfície, que lhe dá essa coloração."
+  },
+  {
+    "question": "O que é um buraco negro?",
+    "options": [
+      "Uma estrela em formação",
+      "Uma região com gravidade tão forte que nem a luz pode escapar",
+      "Uma galáxia em colapso",
+      "Um cometa congelado"
+    ],
+    "answer": "Uma região com gravidade tão forte que nem a luz pode escapar",
+    "feedback": "Um buraco negro é formado pelo colapso gravitacional de uma estrela massiva e tem uma gravidade tão intensa que nem mesmo a luz consegue escapar."
+  },
+  {
+    "question": "Qual é o nome da galáxia em que vivemos?",
+    "options": ["Andrômeda", "Via Láctea", "Triângulo", "Grande Nuvem de Magalhães"],
+    "answer": "Via Láctea",
+    "feedback": "A Via Láctea é a galáxia espiral onde está localizado o Sistema Solar e centenas de bilhões de outras estrelas."
+  },
+  {
+    "question": "Qual planeta tem os anéis mais visíveis no Sistema Solar?",
+    "options": ["Júpiter", "Urano", "Netuno", "Saturno"],
+    "answer": "Saturno",
+    "feedback": "Saturno é conhecido pelos seus anéis brilhantes e bem visíveis, compostos principalmente de gelo e partículas rochosas."
+  },
+  {
+    "question": "Qual é a unidade usada para medir a distância entre estrelas?",
+    "options": ["Anos-luz", "Quilômetros", "Milhas", "Unidades Astronômicas"],
+    "answer": "Anos-luz",
+    "feedback": "O ano-luz é a unidade usada para medir distâncias astronômicas e representa a distância que a luz percorre em um ano."
+  },
+  {
+    "question": "Qual planeta é o mais próximo do Sol?",
+    "options": ["Vênus", "Marte", "Mercúrio", "Terra"],
+    "answer": "Mercúrio",
+    "feedback": "Mercúrio é o planeta mais próximo do Sol, orbitando a uma distância média de cerca de 58 milhões de quilômetros."
+  },
+  {
+    "question": "Como são chamadas as estrelas cadentes?",
+    "options": ["Asteroides", "Cometas", "Meteoroides", "Meteoros"],
+    "answer": "Meteoros",
+    "feedback": "Estrelas cadentes são na verdade meteoros, que são fragmentos de rocha ou poeira que entram na atmosfera da Terra e queimam devido ao atrito."
+  },
+  {
+    "question": "Qual é o nome do maior vulcão conhecido no Sistema Solar?",
+    "options": ["Monte Everest", "Monte Olimpo", "Valles Marineris", "Kilimanjaro"],
+    "answer": "Monte Olimpo",
+    "feedback": "O Monte Olimpo é o maior vulcão conhecido no Sistema Solar, localizado em Marte, com cerca de 22 km de altura."
+  }
+]

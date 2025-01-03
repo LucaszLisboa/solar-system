@@ -8,6 +8,8 @@ import { Home } from './pages/home/Home';
 import { Quizz } from './pages/quizz/Quizz';
 import 'bootstrap/dist/css/bootstrap.min.css';
 import { PictureOfDay } from './pages/pictureOfDay/PictureOfDay';
+import { QuizzProvider } from './context/QuizzContext';
+import { VoiceAssistantProvider } from './context/VoiceAssistantContext';
 
 
 export function App() {
@@ -41,7 +43,11 @@ export function App() {
   return (
     <div className="App">
       <AuthContext>
-        <RouterProvider router={router}></RouterProvider>
+        <QuizzProvider>
+          <VoiceAssistantProvider>
+            <RouterProvider router={router}></RouterProvider>
+          </VoiceAssistantProvider>
+        </QuizzProvider>
       </AuthContext>
     </div>
   );

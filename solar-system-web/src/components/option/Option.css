@@ -1,0 +1,23 @@
+.option {
+  background-color: rgba(0, 27, 102, 0.84);
+  cursor: pointer;
+  opacity: 0.8;
+  transition: 0.4s;
+}
+
+.option:hover {
+  /* background-color:rgb(177, 177, 177); */
+  opacity: 1;
+}
+
+.correct-option{
+  background-color:rgb(9, 255, 0);
+  font-weight: bold;
+}
+
+.wrong-option{
+  background-color:rgb(209, 0, 0);
+  font-weight: bold;
+}
+
+
