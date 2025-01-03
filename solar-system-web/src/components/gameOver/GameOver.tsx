@@ -2,11 +2,11 @@ import { useContext } from "react";
 import { QuizzContext } from "../../context/QuizzContext";
 
 export function GameOver (){
-  const [quizzState, dispatch] = useContext(QuizzContext);
-
-  const handleClickReiniciar = () => {
-    dispatch({type: "END"});
+  const quizzContext = useContext(QuizzContext);
+  if (!quizzContext) {
+    throw new Error("GameOver deve estar dentro de um QuizzProvider!");
   }
+  const [quizzState, dispatch] = quizzContext;
 
   return (
     <div id="gameOver">

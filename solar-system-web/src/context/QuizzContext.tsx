@@ -3,7 +3,19 @@ import questions from "../quizzData.json";
 
 const STAGES = ["Start", "Playing", "End"] as const;
 
-export const QuizzContext = createContext<undefined>(undefined);
+import { Dispatch } from "react";
+
+interface QuizzState {
+  gameStage: string;
+  questions: any[];
+  currentQuestion: number;
+  score: number;
+  answerSelected: any;
+}
+
+type QuizzContextType = [QuizzState, Dispatch<any>];
+
+export const QuizzContext = createContext<QuizzContextType | undefined | null >(undefined);
 
 const initialState = {
   gameStage: STAGES[0],

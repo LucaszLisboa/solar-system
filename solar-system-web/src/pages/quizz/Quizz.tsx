@@ -15,7 +15,11 @@ const CanvasContainer = styled.div`
 
 export function Quizz() {
   const context = useContext(Context);
-  const [quizzState, dispatch] = useContext(QuizzContext);
+  const quizzContext = useContext(QuizzContext);
+  if (!quizzContext) {
+    throw new Error("Quizz deve estar dentro de um QuizzProvider!");
+  }
+  const [quizzState, dispatch] = quizzContext;
 
   const handleClickStartQuizz = () => {
     dispatch({type: "START"});

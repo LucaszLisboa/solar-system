@@ -3,7 +3,12 @@ import { QuizzContext } from "../../context/QuizzContext";
 import "./Option.css";
 
 export function Option ({ option, selectOption, answer }: any){
-  const [quizzState, dispatch] = useContext(QuizzContext);
+  const quizzContext = useContext(QuizzContext);
+  if (!quizzContext) {
+    throw new Error("Option deve estar dentro de um QuizzProvider!");
+  }
+  const [quizzState] = quizzContext;
+
 
   return (
     <div 

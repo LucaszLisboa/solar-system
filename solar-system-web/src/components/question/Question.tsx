@@ -4,7 +4,11 @@ import { Option } from "../option/Option";
 import "./Question.css";
 
 export function Question() {
-  const [quizzState, dispatch] = useContext(QuizzContext);
+  const quizzContext = useContext(QuizzContext);
+  if (!quizzContext) {
+    throw new Error("Question deve estar dentro de um QuizzProvider!");
+  }
+  const [quizzState, dispatch] = quizzContext;
   const currentQuestion = quizzState.questions[quizzState.currentQuestion];
 
   const onSelectOption = (option: any) => {
