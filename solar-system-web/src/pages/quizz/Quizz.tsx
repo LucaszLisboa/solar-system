@@ -28,9 +28,9 @@ export function Quizz() {
 
   return (
     <CanvasContainer className="canvasContainer">
-      <Navbar user={context?.user?.email} />
+      <Navbar user={context?.user?.displayName} />
       <div className="d-flex flex-column align-items-center justify-content-center h-75">
-        <h1>Quizz de Astronomia</h1>
+        <h1 className="fs-1">Quizz de Astronomia</h1>
         {quizzState.gameStage === "Start" && (
           <>
             <p>Selecione o quizz abaixo para começar</p>

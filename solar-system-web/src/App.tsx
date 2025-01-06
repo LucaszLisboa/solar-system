@@ -7,7 +7,7 @@ import './App.css';
 import { Home } from './pages/home/Home';
 import { Quizz } from './pages/quizz/Quizz';
 import 'bootstrap/dist/css/bootstrap.min.css';
-import { PictureOfDay } from './pages/pictureOfDay/PictureOfDay';
+import { Curiosidades } from './pages/curiosidades/Curiosidades';
 import { QuizzProvider } from './context/QuizzContext';
 import { VoiceAssistantProvider } from './context/VoiceAssistantContext';
 
@@ -35,8 +35,8 @@ export function App() {
       element: <Protected><Quizz /></Protected>
     },
     {
-      path: '/pictureOfDay',
-      element: <Protected><PictureOfDay /></Protected>
+      path: '/curiosidades',
+      element: <Protected><Curiosidades /></Protected>
     }
   ])
 

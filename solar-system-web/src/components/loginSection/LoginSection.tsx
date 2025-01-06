@@ -18,7 +18,7 @@ export default function LoginSection() {
     <Container className="d-flex align-items-center position-absolute justify-content-end">
       <Card className="p-4 w-100" style={{ maxWidth: '500px' }}>
         <Card.Body>
-          <Card.Title className="text-center">Space Travel</Card.Title>
+        <Card.Title className="text-center"><h3>Viagem ao Espaço</h3></Card.Title>
           <Card.Text className="text-center">Por favor, faça login na sua conta</Card.Text>
           {error && <Alert variant="danger">{error}</Alert>}
           <Form onSubmit={onLogin}>

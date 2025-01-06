@@ -55,7 +55,7 @@ export function Home() {
 
   return (
     <CanvasContainer className="canvasContainer">
-      <Navbar user={context?.user?.email} />
+      <Navbar user={context?.user?.displayName} />
       <PlanetInfoPanel planetInfo={selectedPlanetInfo} onClose={handlePlanetClose} />
       <div className="velocidadeTranslacao">
         <label>Velocidade {velocidadeTranslacao}</label>

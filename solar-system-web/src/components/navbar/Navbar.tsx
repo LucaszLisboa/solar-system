@@ -20,7 +20,7 @@ export function Navbar({ user }: NavbarProps) {
       if (error instanceof Error) {
         errorMessage = error.message;
       }
-      console.log(errorMessage);
+      console.error(errorMessage);
     }
   }
 
@@ -39,7 +39,7 @@ export function Navbar({ user }: NavbarProps) {
           </NavbarComponent.Brand>
           <Nav.Link as={NavLink} to="/home">Home</Nav.Link>
           <Nav.Link as={NavLink} to="/quizz">Quizz</Nav.Link>
-          <Nav.Link as={NavLink} to="/pictureOfDay">Picture of Day NASA</Nav.Link>
+          <Nav.Link as={NavLink} to="/curiosidades">Curiosidades</Nav.Link>
         </Nav>
         <Nav className="d-flex align-items-center flex-row gap-3">
           <Nav.Item>

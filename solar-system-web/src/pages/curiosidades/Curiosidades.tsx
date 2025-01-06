@@ -16,7 +16,7 @@ const CanvasContainer = styled.div`
 
 const apiKey = process.env.NASA_API_KEY
 
-export function PictureOfDay() {
+export function Curiosidades() {
   const context = useContext(Context);
   const [pictureOfDay, setPictureOfDay] = useState(Object);
   const [formattedDate, setFormattedDate] = useState("");
@@ -33,12 +33,33 @@ export function PictureOfDay() {
         setLoading(false)
       })
       .catch((error) => console.error("Error:", error))
+
+    translateLibre("Hello guys", "pt").then((response) => console.log(response))
   }, [])
+
+  async function translateLibre(text: string, targetLanguage: string) {
+    try {
+      const response = await fetch("https://libretranslate.com/translate", {
+        method: "POST",
+        body: JSON.stringify({
+          q: text,
+          source: "en",
+          target: targetLanguage,
+          format: "text",
+        })
+      })
+      const data = await response.json();
+      return data.translatedText;
+    } catch (error) {
+      console.error("Erro ao traduzir:", error);
+      return "Erro ao traduzir.";
+    }
+  }
 
   return (
     <CanvasContainer className="canvasContainer">
-      <Navbar user={context?.user?.email} />
-      <h1>Imagem do dia</h1>
+      <Navbar user={context?.user?.displayName} />
+      <h1>Curiosidade do dia</h1>
       <p>{formattedDate}</p>
       {loading ? <Spinner animation="border" /> :
         pictureOfDay.media_type === "video" ?
