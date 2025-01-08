@@ -1,4 +1,4 @@
-import { useContext, useState, Suspense } from 'react';
+import { useContext, useState, Suspense, useEffect } from 'react';
 import { Context } from '../../context/AuthContext';
 import { Navbar } from '../../components/navbar/Navbar';
 import "./Home.css";
@@ -48,7 +48,14 @@ export function Home() {
     }
   }
 
+  useEffect(() => {
+    return () => {
+      speechSynthesis.cancel();
+    }
+  }, []);
+
   const handlePlanetClose = () => {
+    speechSynthesis.cancel();
     // setar camera para o sol
     setSelectedPlanetInfo(null);
   }

@@ -1,5 +1,5 @@
 import { useContext, useEffect, useState } from "react";
-import { Button, Container } from 'react-bootstrap';
+import { Container } from 'react-bootstrap';
 import { VoiceAssistantContext } from "../../context/VoiceAssistantContext";
 import "./PlanetInfoPanel.css";
 

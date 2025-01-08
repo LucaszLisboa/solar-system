@@ -1,9 +1,10 @@
-import { createContext, useReducer } from "react";
+import { createContext, useEffect, useReducer } from "react";
 import questions from "../quizzData.json";
+import { Dispatch } from "react";
+import { onAuthStateChanged, getAuth } from "firebase/auth";
 
 const STAGES = ["Start", "Playing", "End"] as const;
 
-import { Dispatch } from "react";
 
 interface QuizzState {
   gameStage: string;
@@ -76,6 +77,19 @@ const quizzReducer = (state: any, action: any) => {
 
 export const QuizzProvider = ({ children }: any) => {
   const value = useReducer(quizzReducer, initialState);
+  const auth = getAuth();
+
+  // caso outro usuário entre no quizz, reiniciar o jogo
+  useEffect(() => {
+    const unsubscribe = onAuthStateChanged(auth, (user) => {
+      if (user) {
+        value[1]({ type: "NEW_GAME" });
+      }
+    });
+
+    // Cleanup para evitar vazamentos de memória
+    return () => unsubscribe();
+  }, [auth]);
 
   return (
     <QuizzContext.Provider value={value}>
