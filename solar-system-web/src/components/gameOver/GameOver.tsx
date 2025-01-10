@@ -1,12 +1,14 @@
-import { useContext, useEffect } from "react";
+import { useContext, useEffect, useState } from "react";
 import { QuizzContext } from "../../context/QuizzContext";
 import { doc, setDoc } from "firebase/firestore"; 
 import { Context } from "../../context/AuthContext";
 import { db } from "../../firebase";
+import "./GameOver.css";
 
-export function GameOver (){
+export function GameOver() {
   const userContext = useContext(Context);
   const quizzContext = useContext(QuizzContext);
+  const [showConfetti, setShowConfetti] = useState(false);
   if (!quizzContext) {
     throw new Error("GameOver deve estar dentro de um QuizzProvider!");
   }
@@ -18,15 +20,16 @@ export function GameOver (){
   }, []);
 
   const verifyUserScore = async () => {
-    if(quizzState.score === quizzState.questions.length){
+    if (quizzState.score === quizzState.questions.length) {
       addTrophyToUser();
-      // Jogar confete para comemorar
+      setShowConfetti(true);
+      setTimeout(() => setShowConfetti(false), 5000);
     }
-  }
+  };
 
   const addTrophyToUser = async () => {
     try{
-      // adicionar trofeu ao usuário
+      // Adiciona troféu ao usuário
       if (userId) {
         const userRef = doc(db, "trophyUsers", userId);
         await setDoc(userRef, {
@@ -39,18 +42,32 @@ export function GameOver (){
     } catch (error) {
       console.error("Erro ao adicionar trofeu ao usuário: ", error);
     }
-  }
-
+  };
 
   return (
-    <div id="gameOver">
+    <div id="gameOver" className="mt-4">
       <h2>Fim do Quizz!</h2>
-      <p>Pontuação: {quizzState.score}</p>
       <p>
         Você acertou {quizzState.score} de {quizzState.questions.length} perguntas.
       </p>
-      {/* <img src="" alt="" /> */}
-      <button onClick={() => dispatch({type: "NEW_GAME"})}>Reiniciar</button>
+
+      {quizzState.score === quizzState.questions.length ? (
+        <p className="trophy-message">
+          Parabéns! Você acertou todas as questões e receberá um troféu como recompensa!
+        </p>
+      ) : (
+        <p>
+          Estude mais e tente novamente para acertar todas as questões e ganhar um troféu!
+        </p>
+      )}
+
+      {showConfetti && (
+        <div className="confetti">
+
+        </div>
+      )}
+
+      <button className="mt-4" onClick={() => dispatch({ type: "NEW_GAME" })}>Reiniciar</button>
     </div>
-  )
+  );
 }

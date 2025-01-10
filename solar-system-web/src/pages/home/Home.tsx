@@ -72,7 +72,7 @@ export function Home() {
         <Suspense fallback={null}>
           <Stars
             radius={300}
-            depth={60}
+            depth={6000}
             count={12000}
             factor={8}
             saturation={0}

@@ -1,0 +1,39 @@
+@import url('https://fonts.googleapis.com/css2?family=Press+Start+2P&family=Orbitron:wght@400;700&display=swap');
+
+.title{
+  font-family: "Press Start 2P", sans-serif; 
+  color:rgb(0, 153, 255);
+  font-size: "3rem" !important;
+}
+
+.divQuizz {
+  position: absolute;
+  top: 50%;
+  left: 50%;
+  transform: translate(-50%, -50%);
+  z-index: 10;
+  text-align: center;
+  width: 100%;
+}
+
+.btnQuizz {
+  font-family: 'Press Start 2P', sans-serif;
+  padding: 10px 20px;
+  border: 2px solid #fff;
+  background: linear-gradient(145deg,rgb(0, 162, 184),rgb(10, 23, 95));
+  color: #fff;
+  cursor: pointer;
+  box-shadow: 3px 3px 10px rgba(0, 0, 0, 0.5);
+  transition: transform 0.3s, box-shadow 0.3s;
+}
+
+.btnQuizz:hover {
+  transform: scale(1.1);
+  box-shadow: 0 0 15px rgba(255, 255, 255, 0.8);
+}
+
+.btnQuizz:disabled {
+  background: #444;
+  color: #999;
+  cursor: not-allowed;
+}

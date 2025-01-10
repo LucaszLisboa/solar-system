@@ -12,7 +12,7 @@ export function Option ({ option, selectOption, answer }: any){
 
   return (
     <div 
-      className={`option text-black p-3 rounded ${
+      className={`option text-black p-3 ${
         quizzState.answerSelected && option === answer ? "correct-option" : ""
       } ${
         quizzState.answerSelected && quizzState.answerSelected === option && option !== answer ? "wrong-option" : ""
