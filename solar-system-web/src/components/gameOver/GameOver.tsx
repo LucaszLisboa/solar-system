@@ -8,7 +8,6 @@ import "./GameOver.css";
 export function GameOver() {
   const userContext = useContext(Context);
   const quizzContext = useContext(QuizzContext);
-  const [showConfetti, setShowConfetti] = useState(false);
   if (!quizzContext) {
     throw new Error("GameOver deve estar dentro de um QuizzProvider!");
   }
@@ -22,8 +21,6 @@ export function GameOver() {
   const verifyUserScore = async () => {
     if (quizzState.score === quizzState.questions.length) {
       addTrophyToUser();
-      setShowConfetti(true);
-      setTimeout(() => setShowConfetti(false), 5000);
     }
   };
 
@@ -52,21 +49,17 @@ export function GameOver() {
       </p>
 
       {quizzState.score === quizzState.questions.length ? (
-        <p className="trophy-message">
-          Parabéns! Você acertou todas as questões e receberá um troféu como recompensa!
-        </p>
+        <div>
+          <p className="trophy-message">
+            Parabéns! Você acertou todas as questões e receberá um troféu como recompensa!
+          </p>
+          <i className="bi bi-trophy-fill text-warning" title="Conquista Quizz I" style={{ fontSize: '3.2rem' }}></i>
+        </div>
       ) : (
         <p>
           Estude mais e tente novamente para acertar todas as questões e ganhar um troféu!
         </p>
       )}
-
-      {showConfetti && (
-        <div className="confetti">
-
-        </div>
-      )}
-
       <button className="mt-4" onClick={() => dispatch({ type: "NEW_GAME" })}>Reiniciar</button>
     </div>
   );

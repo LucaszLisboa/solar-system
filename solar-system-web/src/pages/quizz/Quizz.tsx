@@ -1,4 +1,4 @@
-import { Suspense, useContext } from "react"
+import { Suspense, useContext, useEffect, useState } from "react"
 import styled from "styled-components";
 import { Navbar } from "../../components/navbar/Navbar";
 import { Context } from "../../context/AuthContext";
@@ -9,6 +9,9 @@ import "./Quizz.css";
 import { Canvas } from "@react-three/fiber";
 import { Stars } from "@react-three/drei";
 import { Rocket } from "../../components/models3D/Rocket";
+import { doc, getDoc } from "firebase/firestore";
+import { db } from "../../firebase";
+import { getAuth } from "firebase/auth";
 
 const CanvasContainer = styled.div`
   width: 100%;
@@ -25,10 +28,37 @@ export function Quizz() {
     throw new Error("Quizz deve estar dentro de um QuizzProvider!");
   }
   const [quizzState, dispatch] = quizzContext;
+  const [trophies, setTrophies] = useState<boolean>(false);
+  const auth = getAuth();
+  const userId = auth?.currentUser?.uid;
+
+  useEffect(() => {
+    if(quizzState.checkTrophy){
+      checkUserTrophies();
+      dispatch({ type: "TROPHY_CHECKED" });
+    }
+  }, [quizzState.checkTrophy]);
 
   const handleClickStartQuizz = () => {
     dispatch({type: "START"});
     dispatch({type: "REORDER_ANSWERS"});
+  }
+
+  const checkUserTrophies = async () => {
+    if(userId){
+      try {
+        const userRef = doc(db, "trophyUsers", userId);
+        const userDoc = await getDoc(userRef);
+        if (userDoc.exists()) {
+          const data = userDoc.data();
+          if(data?.trophies){
+            setTrophies(data.trophies);
+          }
+        }
+      } catch (error) {
+        console.error("Erro ao verificar troféus do usuário: ", error);
+      }
+    }
   }
 
   return (
@@ -56,9 +86,12 @@ export function Quizz() {
           <>
             <p className="title text-white py-3">Selecione o quizz abaixo para começar</p>
             <div className="d-flex gap-3">
-              <button className="btnQuizz" onClick={handleClickStartQuizz}>Quizz I</button>
-              <button className="btnQuizz" disabled>Quizz II</button>
-              <button className="btnQuizz" disabled>Quizz III</button>
+              <div className="d-flex flex-column gap-3">
+                <button className="btnQuizz" onClick={handleClickStartQuizz}>Quizz I</button>
+                {trophies && <i className="bi bi-trophy-fill text-warning" title="Conquista Quizz I" style={{ fontSize: '3.2rem' }}></i>}
+              </div>
+              <button className="btnQuizz h-100" disabled>Quizz II</button>
+              <button className="btnQuizz h-100" disabled>Quizz III</button>
             </div>
           </>
         )}

@@ -4,9 +4,7 @@ import { Container, Nav, Navbar as NavbarComponent } from "react-bootstrap";
 import 'bootstrap-icons/font/bootstrap-icons.css';
 import "./Navbar.css";
 import { VoiceAssistantContext } from "../../context/VoiceAssistantContext";
-import { useContext, useEffect, useState } from "react";;
-import { doc, getDoc } from "firebase/firestore"; 
-import { db } from "../../firebase";
+import { useContext } from "react";
 
 interface NavbarProps {
   user: string | null | undefined;
@@ -15,12 +13,6 @@ interface NavbarProps {
 export function Navbar({ user }: NavbarProps) {
   const voiceAssistantContext = useContext(VoiceAssistantContext);
   const auth = getAuth();
-  const userId = auth?.currentUser?.uid;
-  const [trophies, setTrophies] = useState<boolean>(false);
-
-  useEffect(() => {
-    checkUserTrophies();
-  }, []);  
 
   const handleSignOut = async () => {
     try {
@@ -33,24 +25,6 @@ export function Navbar({ user }: NavbarProps) {
       console.error(errorMessage);
     }
   }
-
-  const checkUserTrophies = async () => {
-    if(userId){
-      try {
-        const userRef = doc(db, "trophyUsers", userId);
-        const userDoc = await getDoc(userRef);
-        if (userDoc.exists()) {
-          const data = userDoc.data();
-          if(data?.trophies){
-            setTrophies(data.trophies);
-          }
-        }
-      } catch (error) {
-        console.error("Erro ao verificar troféus do usuário: ", error);
-      }
-    }
-  }
-  
 
 
   return (
@@ -71,9 +45,6 @@ export function Navbar({ user }: NavbarProps) {
           <Nav.Link as={NavLink} to="/curiosidades">Curiosidades</Nav.Link>
         </Nav>
         <Nav className="d-flex align-items-center flex-row gap-3">
-          <Nav.Item>
-            {trophies && <i className="bi bi-trophy text-warning" title="Conquista Quizz I" style={{ fontSize: '1.6rem' }}></i>}
-          </Nav.Item>
           <Nav.Item>
             <span>Olá <b>{user}</b></span>
           </Nav.Item>

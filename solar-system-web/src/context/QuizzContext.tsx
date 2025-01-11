@@ -12,6 +12,7 @@ interface QuizzState {
   currentQuestion: number;
   score: number;
   answerSelected: any;
+  checkTrophy: boolean;
 }
 
 type QuizzContextType = [QuizzState, Dispatch<any>];
@@ -24,6 +25,7 @@ const initialState = {
   currentQuestion: 0,
   score: 0,
   answerSelected: null,
+  checkTrophy: true
 }
 
 const quizzReducer = (state: any, action: any) => {
@@ -68,6 +70,9 @@ const quizzReducer = (state: any, action: any) => {
         score: state.score + correctAnswer, 
         answerSelected: optionSelected   
       }
+
+    case "TROPHY_CHECKED":
+      return { ...state, checkTrophy: false }
 
     default:
       return state;
