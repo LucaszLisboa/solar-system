@@ -1,0 +1,66 @@
+@import url('https://fonts.googleapis.com/css2?family=Press+Start+2P&family=Orbitron:wght@400;700&display=swap');
+
+.curiosidades-content {
+  position: absolute;
+  top: 68%;
+  left: 50%;
+  transform: translate(-50%, -50%);
+  z-index: 10;
+  text-align: center;
+  max-width: 1000px;
+  padding-bottom: 2rem;
+}
+
+/* Títulos */
+.curiosidades-title {
+  font-family: 'Press Start 2P', sans-serif;
+  font-size: 2rem;
+  font-weight: bold;
+  margin-bottom: 1rem;
+  text-shadow: 2px 2px 4px rgba(0, 0, 0, 0.8);
+}
+
+.curiosidades-title-text {
+  font-size: 1.8rem;
+  font-weight: bold;
+  margin-top: 1.5rem;
+}
+
+/* Data */
+.curiosidades-date {
+  font-family: 'Press Start 2P', sans-serif;
+  font-size: 1.2rem;
+  margin-bottom: 1.5rem;
+}
+
+/* Loading */
+.curiosidades-loading {
+  margin: 2rem 0;
+}
+
+/* Imagem e Vídeo */
+.curiosidades-media,
+.curiosidades-image {
+  max-width: 60%;
+  border-radius: 10px;
+  margin: 1rem 0;
+  box-shadow: 0 4px 10px rgba(0, 0, 0, 0.5);
+}
+
+/* Texto explicativo */
+.curiosidades-text {
+  background: rgba(255, 255, 255, 0.1);
+  border: 2px solid rgba(255, 255, 255, 0.42);
+  padding: 1.5rem;
+  border-radius: 10px;
+  margin-top: 1.5rem;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  gap: 1rem;
+}
+
+.curiosidades-explanation {
+  font-size: 1.1rem;
+  line-height: 1.6;
+}
