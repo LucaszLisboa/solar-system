@@ -1,5 +1,5 @@
 import { useContext, useEffect, useState } from "react";
-import { Container } from 'react-bootstrap';
+import { Button, Container } from 'react-bootstrap';
 import { VoiceAssistantContext } from "../../context/VoiceAssistantContext";
 import "./PlanetInfoPanel.css";
 
@@ -94,7 +94,7 @@ export function PlanetInfoPanel({ planetInfo, onClose}: PlanetInfoPanelProps) {
       {planetInfo && (
         <>
           <div className="buttonClose">
-            <button className="px-3" onClick={onClose}>Fechar</button>
+            <Button variant="info" className="px-3" onClick={onClose}>Fechar</Button>
           </div>
           <div className="planetInfoPanel d-flex flex-column align-items-start">
             <div>

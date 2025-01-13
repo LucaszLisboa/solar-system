@@ -4,6 +4,7 @@ import { doc, setDoc } from "firebase/firestore";
 import { Context } from "../../context/AuthContext";
 import { db } from "../../firebase";
 import "./GameOver.css";
+import { Button } from "react-bootstrap";
 
 export function GameOver() {
   const userContext = useContext(Context);
@@ -60,7 +61,7 @@ export function GameOver() {
           Estude mais e tente novamente para acertar todas as questões e ganhar um troféu!
         </p>
       )}
-      <button className="mt-4" onClick={() => dispatch({ type: "NEW_GAME" })}>Reiniciar</button>
+      <Button variant="dark" className="mt-4 border" onClick={() => dispatch({ type: "NEW_GAME" })}>Reiniciar</Button>
     </div>
   );
 }

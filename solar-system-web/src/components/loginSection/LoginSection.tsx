@@ -1,7 +1,7 @@
 import React, { useState } from "react";
 import { NavLink } from 'react-router-dom';
 import './LoginSection.css';
-import { Container, Card, Form, Alert, Spinner } from 'react-bootstrap';
+import { Container, Card, Form, Alert, Spinner, Button } from 'react-bootstrap';
 import { useAuth } from "../auth/useAuth";
 
 export default function LoginSection() {
@@ -40,15 +40,15 @@ export default function LoginSection() {
                 disabled={loading}
               />
             </Form.Group>
-            <button type="submit" className="btn-block w-100 mt-4" disabled={loading}>
+            <Button type="submit" className="btn-block w-100 mt-4" disabled={loading}>
               {loading ? <Spinner animation="border" size="sm" /> : 'Entrar'}
-            </button>
+            </Button>
           </Form>
           <hr className="my-4 hr-text" data-content="OU" />
-          <button className="btn-block d-flex align-items-center justify-content-center w-100 gap-2" onClick={loginWithGoogle} disabled={loading}>
+          <Button variant="light" className="btn-block d-flex align-items-center justify-content-center w-100 gap-2 border" onClick={loginWithGoogle} disabled={loading}>
             <img className="mr-2" src="https://img.icons8.com/color/48/000000/google-logo.png" alt="Google Logo" width="20" />
             Entrar com Google
-          </button>
+          </Button>
           <Card.Text className="text-center mt-3">
             Não possui uma conta?
             <NavLink className="ms-2" to="/signup">

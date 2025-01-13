@@ -2,6 +2,7 @@ import { useContext } from "react";
 import { QuizzContext } from "../../context/QuizzContext";
 import { Option } from "../option/Option";
 import "./Question.css";
+import { Button } from "react-bootstrap";
 
 export function Question() {
   const quizzContext = useContext(QuizzContext);
@@ -37,7 +38,7 @@ export function Question() {
         </div>
       )}
       { quizzState.answerSelected && (
-        <button onClick={() => dispatch({type: "CHANGE_QUESTION"})} className="bg-white">Continuar</button>
+        <Button variant="dark" onClick={() => dispatch({type: "CHANGE_QUESTION"})} className="border mt-3">Continuar</Button>
       )}
     </div>
   )

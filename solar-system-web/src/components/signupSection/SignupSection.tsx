@@ -1,6 +1,6 @@
 import React, { useState } from "react";
 import { NavLink } from 'react-router-dom';
-import { Container, Card, Form, Alert, Spinner } from 'react-bootstrap';
+import { Container, Card, Form, Alert, Spinner, Button } from 'react-bootstrap';
 import { useAuth } from "../auth/useAuth";
 import './SignupSection.css';
 
@@ -64,9 +64,9 @@ export default function SignupSection() {
                 disabled={loading}
               />
             </Form.Group>
-            <button type="submit" className="btn-block w-100 mt-4" disabled={loading}>
+            <Button type="submit" className="btn-block w-100 mt-4" disabled={loading}>
               {loading ? <Spinner animation="border" size="sm" /> : 'Registrar'}
-            </button>
+            </Button>
           </Form>
           <Card.Text className="text-center mt-3">
             Já possui uma conta?
