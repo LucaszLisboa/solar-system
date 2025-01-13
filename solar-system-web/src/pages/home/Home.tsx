@@ -65,7 +65,7 @@ export function Home() {
       <Navbar user={context?.user?.displayName} />
       <PlanetInfoPanel planetInfo={selectedPlanetInfo} onClose={handlePlanetClose} />
       <div className="velocidadeTranslacao">
-        <label>Velocidade {velocidadeTranslacao}</label>
+      <label>Velocidade: {velocidadeTranslacao.toFixed(2)}</label>
         <input type="range" min="0.01" max="10" step="0.001" value={velocidadeTranslacao} onChange={(e) => setVelocidadeTranslacao(Number(e.target.value))} className='inputRange' />
       </div>
       <Canvas>
@@ -81,7 +81,9 @@ export function Home() {
           <ambientLight intensity={2} />
           <Bounds fit clip observe margin={1.2}>
             <SelectToZoom>
-              <Sun />
+              <Sun
+                customClick={() => handlePlanetClick('Sol')} 
+              />
               {planetsDataRender.map((planet, index) => (
                 <Planet
                   key={index}

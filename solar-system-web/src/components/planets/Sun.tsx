@@ -4,7 +4,7 @@ import { TextureLoader } from "three";
 import { useRef } from "react";
 import * as THREE from "three";
 
-export function Sun() {
+export function Sun({customClick}: any) {
   const [colorMap, normalMap] = useLoader(TextureLoader, [SunNormalMap])
   const sunRef = useRef<THREE.Mesh>(null);
 
@@ -19,7 +19,7 @@ export function Sun() {
   return (
     <>
       <pointLight color="#f6f3ea" position={[0, 0, 0]} intensity={20} decay={0.3} />
-      <mesh ref={sunRef} position={[0, 0, 0]}>
+      <mesh ref={sunRef} position={[0, 0, 0]} onClick={customClick}>
         <sphereGeometry args={[16, 35, 35]} />
         <meshStandardMaterial
           map={colorMap}
