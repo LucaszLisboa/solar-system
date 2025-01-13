@@ -1,4 +1,4 @@
-import { useContext, useEffect, useState } from "react";
+import { useContext, useEffect } from "react";
 import { QuizzContext } from "../../context/QuizzContext";
 import { doc, setDoc } from "firebase/firestore"; 
 import { Context } from "../../context/AuthContext";
