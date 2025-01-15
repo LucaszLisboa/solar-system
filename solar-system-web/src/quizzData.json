@@ -1,9 +1,9 @@
 [
   {
-    "question": "Qual é o maior planeta do Sistema Solar?",
-    "options": ["Júpiter", "Saturno", "Terra", "Netuno"],
-    "answer": "Júpiter",
-    "feedback": "Júpiter é o maior planeta do Sistema Solar, com um diâmetro cerca de 11 vezes maior que o da Terra."
+    "question": "Qual planeta é o mais próximo do Sol?",
+    "options": ["Vênus", "Marte", "Mercúrio", "Terra"],
+    "answer": "Mercúrio",
+    "feedback": "Mercúrio é o planeta mais próximo do Sol, orbitando a uma distância média de cerca de 58 milhões de quilômetros."
   },
   {
     "question": "Qual é a estrela mais próxima da Terra?",
@@ -12,33 +12,16 @@
     "feedback": "O Sol é a estrela mais próxima da Terra e é responsável por fornecer luz e calor para sustentar a vida no nosso planeta."
   },
   {
-    "question": "Qual planeta é conhecido como o 'Planeta Vermelho'?",
-    "options": ["Vênus", "Marte", "Júpiter", "Mercúrio"],
-    "answer": "Marte",
-    "feedback": "Marte é conhecido como o 'Planeta Vermelho' devido à presença de óxido de ferro (ferrugem) em sua superfície, que lhe dá essa coloração."
-  },
-  {
-    "question": "O que é um buraco negro?",
-    "options": [
-      "Uma estrela em formação",
-      "Uma região com gravidade tão forte que nem a luz pode escapar",
-      "Uma galáxia em colapso",
-      "Um cometa congelado"
-    ],
-    "answer": "Uma região com gravidade tão forte que nem a luz pode escapar",
-    "feedback": "Um buraco negro é formado pelo colapso gravitacional de uma estrela massiva e tem uma gravidade tão intensa que nem mesmo a luz consegue escapar."
-  },
-  {
     "question": "Qual é o nome da galáxia em que vivemos?",
     "options": ["Andrômeda", "Via Láctea", "Triângulo", "Grande Nuvem de Magalhães"],
     "answer": "Via Láctea",
     "feedback": "A Via Láctea é a galáxia espiral onde está localizado o Sistema Solar e centenas de bilhões de outras estrelas."
   },
   {
-    "question": "Qual planeta tem os anéis mais visíveis no Sistema Solar?",
-    "options": ["Júpiter", "Urano", "Netuno", "Saturno"],
-    "answer": "Saturno",
-    "feedback": "Saturno é conhecido pelos seus anéis brilhantes e bem visíveis, compostos principalmente de gelo e partículas rochosas."
+    "question": "Qual planeta é conhecido como o 'Planeta Vermelho'?",
+    "options": ["Vênus", "Marte", "Júpiter", "Mercúrio"],
+    "answer": "Marte",
+    "feedback": "Marte é conhecido como o 'Planeta Vermelho' devido à presença de óxido de ferro (ferrugem) em sua superfície, que lhe dá essa coloração."
   },
   {
     "question": "Qual é a unidade usada para medir a distância entre estrelas?",
@@ -47,21 +30,33 @@
     "feedback": "O ano-luz é a unidade usada para medir distâncias astronômicas e representa a distância que a luz percorre em um ano."
   },
   {
-    "question": "Qual planeta é o mais próximo do Sol?",
-    "options": ["Vênus", "Marte", "Mercúrio", "Terra"],
-    "answer": "Mercúrio",
-    "feedback": "Mercúrio é o planeta mais próximo do Sol, orbitando a uma distância média de cerca de 58 milhões de quilômetros."
+    "question": "Qual planeta do Sistema Solar tem o maior número de luas conhecidas?",
+    "options": ["Júpiter", "Saturno", "Netuno", "Urano"],
+    "answer": "Saturno",
+    "feedback": "Saturno atualmente tem o maior número de luas conhecidas no Sistema Solar, com mais de 80 identificadas."
   },
   {
-    "question": "Como são chamadas as estrelas cadentes?",
-    "options": ["Asteroides", "Cometas", "Meteoroides", "Meteoros"],
-    "answer": "Meteoros",
-    "feedback": "Estrelas cadentes são na verdade meteoros, que são fragmentos de rocha ou poeira que entram na atmosfera da Terra e queimam devido ao atrito."
+    "question": "Os planetas gasosos são compostos por gases, como hidrogênio e hélio. Qual o nome do maior planeta gasoso do Sistema Solar?",
+    "options": ["Júpiter", "Saturno", "Terra", "Netuno"],
+    "answer": "Júpiter",
+    "feedback": "Júpiter é o maior planeta gasoso do Sistema Solar, com um diâmetro cerca de 11 vezes maior que o da Terra."
   },
   {
-    "question": "Qual é o nome do maior vulcão conhecido no Sistema Solar?",
-    "options": ["Monte Everest", "Monte Olimpo", "Valles Marineris", "Kilimanjaro"],
-    "answer": "Monte Olimpo",
-    "feedback": "O Monte Olimpo é o maior vulcão conhecido no Sistema Solar, localizado em Marte, com cerca de 22 km de altura."
+    "question": "O planeta Terra realiza vários movimentos, sendo os dois principais o de rotação, realizado em torno de si mesmo, e o movimento realizado em torno do Sol, sendo corretamente chamado de...",
+    "options": ["Rotação", "Movimentação", "Mutação", "Translação"],
+    "answer": "Translação",
+    "feedback": "O movimento que o planeta Terra realiza em torno da órbita solar é denominado translação. Ele é responsável, entre outros fenômenos, pela ocorrência das estações do ano."
+  },
+  {
+    "question": "Os anéis de Saturno são compostos por partículas que variam em tamanho, desde pequenos grãos de poeira até blocos de gelo maiores. O principal componente dessas partículas é:",
+    "options": ["Carbono", "Silício", "Gelo de água", "Metano"],
+    "answer": "Gelo de água",
+    "feedback": "Os anéis de Saturno são formados principalmente por gelo de água, com pequenas quantidades de poeira e outros materiais misturados."
+  },
+  {
+    "question": "O calor e a luz irradiados pelo Sol resultam de contínuas reações nucleares que ocorrem no interior dessa estrela, a altíssimas temperaturas. Os gases envolvidos nessas reações são:",
+    "options": ["Oxigênio e hidrogênio", "Oxigênio e hélio", "Hidrogênio e hélio", "Metano e amônia"],
+    "answer": "Hidrogênio e hélio",
+    "feedback": "O Sol é composto principalmente de hidrogênio e hélio, que são os gases envolvidos nas reações nucleares que geram calor e luz."
   }
 ]
