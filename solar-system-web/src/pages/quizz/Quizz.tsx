@@ -33,11 +33,11 @@ export function Quizz() {
   const userId = auth?.currentUser?.uid;
 
   useEffect(() => {
-    if(quizzState.checkTrophy){
+    if (quizzState.checkTrophy || !trophies) {
       checkUserTrophies();
       dispatch({ type: "TROPHY_CHECKED" });
     }
-  }, [quizzState.checkTrophy]);
+  }, [quizzState.checkTrophy, trophies]);
 
   const handleClickStartQuizz = () => {
     dispatch({type: "START"});
@@ -45,21 +45,20 @@ export function Quizz() {
   }
 
   const checkUserTrophies = async () => {
-    if(userId){
-      try {
-        const userRef = doc(db, "trophyUsers", userId);
-        const userDoc = await getDoc(userRef);
-        if (userDoc.exists()) {
-          const data = userDoc.data();
-          if(data?.trophies){
-            setTrophies(data.trophies);
-          }
+    if (!userId || trophies) return; // Evita requisições desnecessárias
+    try {
+      const userRef = doc(db, "trophyUsers", userId);
+      const userDoc = await getDoc(userRef);
+      if (userDoc.exists()) {
+        const data = userDoc.data();
+        if (data?.trophies) {
+          setTrophies(data.trophies);
         }
-      } catch (error) {
-        console.error("Erro ao verificar troféus do usuário: ", error);
       }
+    } catch (error) {
+      console.error("Erro ao verificar troféus do usuário: ", error);
     }
-  }
+  };
 
   return (
     <CanvasContainer className="canvasContainer">
