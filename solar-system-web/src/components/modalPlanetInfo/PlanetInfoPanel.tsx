@@ -94,7 +94,7 @@ export function PlanetInfoPanel({ planetInfo, onClose}: PlanetInfoPanelProps) {
       {planetInfo && (
         <>
           <div className="buttonClose">
-            <Button variant="info" className="px-3" onClick={onClose}>Fechar</Button>
+            <Button variant="info" className="px-3 fw-bold" onClick={onClose}>Fechar</Button>
           </div>
           <div className="planetInfoPanel d-flex flex-column align-items-start">
             <div>
