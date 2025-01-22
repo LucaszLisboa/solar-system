@@ -14,7 +14,7 @@ const firebaseConfig = {
   storageBucket: "systemsolar-app.appspot.com",
   messagingSenderId: "67023889283",
   appId: "1:67023889283:web:9664a7987271b8e2614cb6",
-  measurementId: "G-5W7MC04NYL"
+  measurementId: "G-5W7MC04NYL" 
 };
 
 // Use this to initialize the firebase App
