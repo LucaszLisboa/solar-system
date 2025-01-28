@@ -3,6 +3,7 @@ import { signInWithEmailAndPassword, signInWithPopup, createUserWithEmailAndPass
 import { auth } from '../../firebase';
 import { provider } from './authConfig';
 import { useNavigate } from 'react-router-dom';
+import { errorMessages } from '../../utils/ErrorMessages';
 
 export const useAuth = () => {
   const [error, setError] = useState<string | null>(null);
@@ -15,7 +16,7 @@ export const useAuth = () => {
       await signInWithEmailAndPassword(auth, email, password);
       navigate('/home');
     } catch (err: any) {
-      setError(err.message);
+      setError(errorMessages[err.code] || err.message);
     } finally {
       setLoading(false);
     }
@@ -26,12 +27,9 @@ export const useAuth = () => {
     try {
       const result = await signInWithPopup(auth, provider);
       GoogleAuthProvider.credentialFromResult(result);
-      // const credential = GoogleAuthProvider.credentialFromResult(result);
-      // const token = credential?.accessToken;
-      // const user = result.user;
       navigate('/home');
     } catch (err: any) {
-      setError(err.message);
+      setError(errorMessages[err.code] || err.message);
     } finally {
       setLoading(false);
     }
@@ -49,7 +47,7 @@ export const useAuth = () => {
       await updateProfile (user, { displayName: username });
       navigate('/');
     } catch (err: any) {
-      setError(err.message);
+      setError(errorMessages[err.code] || err.message);
     } finally {
       setLoading(false);
     }
