@@ -32,43 +32,38 @@ export function Curiosidades() {
 
   useEffect(() => {
     setLoading(true);
-    fetch(`https://api.nasa.gov/planetary/apod?api_key=${apiKey}`)
-      .then((response) => response.json())
-      .then((data) => {
-        setPictureOfDay(data)
-        const date = new Date();
-        setFormattedDate(format(date, "dd MMMM yyyy", { locale: ptBR }))
-        setLoading(false)
-      })
-      .catch((error) => console.error("Error:", error))
+    getPictureOfDay();
   }, [])
 
   useEffect(() => {
-    // Adiciona o script da API do Google Translate
-    const script = document.createElement('script');
-    script.src = '//translate.google.com/translate_a/element.js?cb=googleTranslateElementInit';
+    const script = document.createElement("script");
+    script.src = "//translate.google.com/translate_a/element.js?cb=googleTranslateElementInit";
     script.async = true;
     document.body.appendChild(script);
-
-    // Função de inicialização
-    window.googleTranslateElementInit = function () {
-      new window.google.translate.TranslateElement(
-        {
-          pageLanguage: 'en', // Idioma original do conteúdo
-          includedLanguages: 'pt', // Define os idiomas disponíveis para tradução
-          autoDisplay: false, // Desativa a barra superior
-          layout: google.translate.TranslateElement.InlineLayout.SIMPLE, // Tradução inline
-        },
-        'google_translate_element' // Apenas traduz este ID
-      );
-    };
-
-    // Cleanup para remover o script ao sair da página
     return () => {
       document.body.removeChild(script);
-      delete window.googleTranslateElementInit;
+    }
+  }, [])
+
+  useEffect(() => {
+    const removeTranslateBanner = () => {
+      document.body.style.top = "0px";
     };
+    const interval = setInterval(removeTranslateBanner, 0);
+    return () => clearInterval(interval);
   }, []);
+
+  const getPictureOfDay = async () => {
+    fetch(`https://api.nasa.gov/planetary/apod?api_key=${apiKey}`)
+    .then((response) => response.json())
+    .then((data) => {
+      setPictureOfDay(data)
+      const date = new Date();
+      setFormattedDate(format(date, "dd MMMM yyyy", { locale: ptBR }))
+      setLoading(false)
+    })
+    .catch((error) => console.error("Error:", error))
+  }
 
   return (
     <CanvasContainer className="canvasContainer">
@@ -87,7 +82,7 @@ export function Curiosidades() {
           <Rocket positionX={6.2} positionY={-2} positionZ={0} />
         </Suspense>
       </Canvas>
-      <div className="d-flex flex-column align-items-center justify-content-center curiosidades-content">
+      <div className="curiosidades-content">
         <h1 className="curiosidades-title text-info">Curiosidade do dia</h1>
         <p className="curiosidades-date">{formattedDate}</p>
         {loading ? (
@@ -106,12 +101,11 @@ export function Curiosidades() {
           />
         )}
         <div className="curiosidades-text">
-          <div id="google_translate_element">
-            <h2 className="curiosidades-title-text">{pictureOfDay.title}</h2>
-            <p className="curiosidades-explanation">
-              <strong>Explicação:</strong> {pictureOfDay.explanation}
-            </p>
-          </div>
+          <h2 className="curiosidades-title-text">{pictureOfDay.title}</h2>
+          <p className="curiosidades-explanation">
+            <strong>Explicação:</strong> {pictureOfDay.explanation}
+          </p>
+          <div id="google_translate_element"></div>
         </div>
       </div>
     </CanvasContainer>

@@ -2,6 +2,7 @@ import { useContext, useEffect, useState } from "react";
 import { Button, Container } from 'react-bootstrap';
 import { VoiceAssistantContext } from "../../context/VoiceAssistantContext";
 import "./PlanetInfoPanel.css";
+import { speak } from "../../utils/Speak";
 
 interface PlanetInfoPanelProps {
   planetInfo: {
@@ -28,17 +29,8 @@ interface PlanetInfoPanelProps {
 export function PlanetInfoPanel({ planetInfo, onClose}: PlanetInfoPanelProps) {
   if(!planetInfo) return null;
   const voiceAssistantContext = useContext(VoiceAssistantContext);
-
   const [orbitalPeriodExpanded, setOrbitalPeriodExpanded] = useState(false);
   const [satellitesExpanded, setSatellitesExpanded] = useState(false);
-
-  function speak(text: string) {
-    const utterance = new SpeechSynthesisUtterance(text);
-    utterance.lang = 'pt-BR'; // Idioma da fala
-    utterance.rate = 1.3; // Velocidade da fala (1 é normal)
-    utterance.pitch = 0.4; // Tom da voz
-    speechSynthesis.speak(utterance);
-  }
 
   useEffect(() => {
     verifyVoiceAssistant();
@@ -53,7 +45,7 @@ export function PlanetInfoPanel({ planetInfo, onClose}: PlanetInfoPanelProps) {
 
   const speakInformationsPlanet = (planetInfo: any) => {
     speak(`
-      Planeta ${planetInfo?.name}. ${planetInfo?.resume}`
+      ${planetInfo?.name}. ${planetInfo?.resume}`
     );
     speak(`
       Dimensões Físicas. 
