@@ -2,7 +2,7 @@ import { useContext, useEffect } from "react";
 import { QuizzContext } from "../../context/QuizzContext";
 import { Option } from "../option/Option";
 import "./Question.css";
-import { Button } from "react-bootstrap";
+import Button from 'react-bootstrap/Button';
 import { VoiceAssistantContext } from "../../context/VoiceAssistantContext";
 import { speak } from "../../utils/Speak";
 

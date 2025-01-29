@@ -1,4 +1,8 @@
-export const errorMessages = {
+type ErrorMessages = {
+  [key: string]: string;
+};
+
+export const errorMessages: ErrorMessages = {
   "auth/invalid-credential": "Credenciais inválidas.",
   "auth/invalid-email": "O e-mail fornecido é inválido.",
   "auth/user-disabled": "Este usuário foi desativado.",
