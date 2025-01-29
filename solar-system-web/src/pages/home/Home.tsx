@@ -56,7 +56,6 @@ export function Home() {
 
   const handlePlanetClose = () => {
     speechSynthesis.cancel();
-    // setar camera para o sol
     setSelectedPlanetInfo(null);
   }
 
@@ -65,7 +64,7 @@ export function Home() {
       <Navbar user={context?.user?.displayName} />
       <PlanetInfoPanel planetInfo={selectedPlanetInfo} onClose={handlePlanetClose} />
       <div className="velocidadeTranslacao">
-      <label>Velocidade: {velocidadeTranslacao.toFixed(2)}</label>
+        <label>Velocidade: {velocidadeTranslacao.toFixed(2)}</label>
         <input type="range" min="0.01" max="10" step="0.001" value={velocidadeTranslacao} onChange={(e) => setVelocidadeTranslacao(Number(e.target.value))} className='inputRange' />
       </div>
       <Canvas>
@@ -99,7 +98,7 @@ export function Home() {
             </SelectToZoom>
           </Bounds>
         </Suspense>
-        <OrbitControls enableZoom={true} enablePan={true} enableRotate={true} zoomSpeed={1.2} panSpeed={0.5} rotateSpeed={0.5} />
+        <OrbitControls makeDefault enableZoom={true} enablePan={true} enableRotate={true} zoomSpeed={1.2} panSpeed={0.5} rotateSpeed={0.5} />
       </Canvas>
     </CanvasContainer>
   )
@@ -113,11 +112,9 @@ function SelectToZoom({ children }: { children: React.ReactNode }) {
     if (planetRef) {
       const planetPosition = new Vector3();
       planetRef.getWorldPosition(planetPosition);
-      //zoom tem que ser configurado de acordo com o tamanho do planeta
-      // camera.position.lerp(planetPosition.clone().add(new Vector3(1, 4, 20)), 0.1);
       camera.lookAt(planetPosition);
     } else {
-      // Handle the case when planetRef is null
+      api.refresh().fit();
     }
   });
 

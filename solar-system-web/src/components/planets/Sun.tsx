@@ -12,7 +12,7 @@ export function Sun({customClick}: any) {
     const elapsedTime = clock.getElapsedTime();
     const sun = sunRef.current;
     if (sun) {
-      sun.rotation.y = elapsedTime / 9;
+      sun.rotation.y = elapsedTime / 50;
     }
   });
 

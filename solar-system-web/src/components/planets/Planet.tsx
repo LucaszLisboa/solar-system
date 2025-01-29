@@ -20,54 +20,51 @@ interface PlanetProps {
 }
 
 export function Planet({ name, positionPlanet, planetMapTexture, size, speedPlanetOrbit, orbitLineColor, customClick }: PlanetProps) {
-  const [colorMap, specularMap, cloudsMap] = useLoader(TextureLoader, [planetMapTexture, EarthSpecularMap, EarthCloudsMap])
-  const [colorRingMap] = useLoader(TextureLoader, [RingTextureMap])
+  const [colorMap, specularMap, cloudsMap] = useLoader(TextureLoader, [planetMapTexture, EarthSpecularMap, EarthCloudsMap]);
+  const [colorRingMap] = useLoader(TextureLoader, [RingTextureMap]);
+
   const planetRef = useRef<THREE.Mesh>(null);
   const cloudsRef = useRef<THREE.Mesh>(null);
   const ringRef = useRef<THREE.Mesh>(null);
-  const [active, setActive] = useState(false);
 
-  const planetPosition = new THREE.Vector3().fromArray(positionPlanet);
+  const orbitTimeRef = useRef(0); // Armazena tempo acumulado sem re-renderizar
 
-  // const { scale } = useSpring({
-  //   scale: active ? 1.5 : 1,
-  // });
+  // Calcular a distância inicial com base na posição do planeta
+  const orbitRadius = Math.sqrt(positionPlanet[0] ** 2 + positionPlanet[2] ** 2);
 
-  useFrame(({ clock }) => {
-    const elapsedTime = clock.getElapsedTime();
+  useFrame((_, delta) => {
     const planet = planetRef.current;
     const clouds = cloudsRef.current;
     const ring = ringRef.current;
 
-    const orbitRadius = positionPlanet[2];
-    const orbitSpeed = speedPlanetOrbit;
+    // Atualizar tempo de órbita sem renderização extra
+    orbitTimeRef.current += delta * speedPlanetOrbit;
 
-    const newX = Math.cos(elapsedTime * orbitSpeed) * orbitRadius;
-    const newZ = Math.sin(elapsedTime * orbitSpeed) * orbitRadius;
+    const newX = Math.cos(orbitTimeRef.current) * orbitRadius;
+    const newZ = Math.sin(orbitTimeRef.current) * orbitRadius;
 
     if (planet) {
-      planet.position.set(newX, 0, newZ);
-      planet.rotation.y = elapsedTime / 6;
+      planet.position.set(newX, positionPlanet[1], newZ);
+      planet.rotation.y += delta / 40;
     }
     if (clouds) {
-      clouds.position.set(newX, 0, newZ);
-      clouds.rotation.y = elapsedTime / 6;
+      clouds.position.set(newX, positionPlanet[1], newZ);
+      clouds.rotation.y += delta / 40;
     }
     if (ring) {
-      ring.position.set(newX, 0, newZ);
+      ring.position.set(newX, positionPlanet[1], newZ);
     }
   });
 
   const handleClick = (planetName: any) => {
-    setActive(!active);
     customClick && customClick(planetName);
   }
 
   return (
     <>
-      <OrbitLine innerRadius={positionPlanet[2]} outerRadius={positionPlanet[2]} lineColor={orbitLineColor} />
+      <OrbitLine innerRadius={orbitRadius} outerRadius={orbitRadius} lineColor={orbitLineColor} />
       {name === 'Terra' && (
-        <mesh ref={cloudsRef} position={planetPosition}>
+        <mesh ref={cloudsRef}>
           <sphereGeometry args={[size, 64, 64]} />
           <meshPhongMaterial
             map={cloudsMap}
@@ -78,7 +75,7 @@ export function Planet({ name, positionPlanet, planetMapTexture, size, speedPlan
           />
         </mesh>
       )}
-      <animated.mesh ref={planetRef} position={planetPosition} onClick={() => (handleClick(name))}>
+      <animated.mesh ref={planetRef} onClick={handleClick}>
         <sphereGeometry args={[size, 64, 64]} />
         {name === 'Terra' && (
           <meshPhongMaterial specularMap={specularMap} />
@@ -90,8 +87,8 @@ export function Planet({ name, positionPlanet, planetMapTexture, size, speedPlan
         />
       </animated.mesh>
       {name === 'Saturno' && (
-        <mesh ref={ringRef} position={[0, 0, 138]} rotation={[Math.PI / 2, 0, 0]}>
-          <ringGeometry args={[1.1, size + 9, 128]} />
+        <mesh ref={ringRef} rotation={[Math.PI / 2, 0, 0]}>
+          <ringGeometry args={[size + 1, size + 9, 128]} />
           <meshBasicMaterial
             map={colorRingMap}
             side={THREE.DoubleSide}
@@ -100,5 +97,5 @@ export function Planet({ name, positionPlanet, planetMapTexture, size, speedPlan
         </mesh>
       )}
     </>
-  )
+  );
 }
