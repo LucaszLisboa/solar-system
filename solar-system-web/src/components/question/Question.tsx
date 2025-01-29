@@ -43,7 +43,7 @@ export function Question() {
   }
 
   return (
-    <div id="question" className="d-flex flex-column align-items-center w-50 bg-primary mt-4 p-4">
+    <div id="question" className="d-flex flex-column align-items-center bg-primary mt-4 p-4">
       <p> Questão {quizzState.currentQuestion + 1} de {quizzState.questions.length}</p>
       <h2>{currentQuestion.question}</h2>
       <div id="question-options" className="py-4 d-flex gap-3 flex-column w-100">

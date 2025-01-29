@@ -4,6 +4,7 @@
   border: 5px solid rgb(255, 255, 255);
   transition: transform 0.3s ease, opacity 0.3s ease;
   background: linear-gradient(135deg, #00bcd4,rgb(17, 39, 163));
+  width: 50%;
 }
 
 .correct-answer{
@@ -13,4 +14,10 @@
 
 .feedback {
   font-size: 1.1rem;
+}
+
+@media (max-width: 768px) {
+  #question {
+    width: 100%;
+  }
 }

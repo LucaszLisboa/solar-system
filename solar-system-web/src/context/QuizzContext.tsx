@@ -5,7 +5,6 @@ import { onAuthStateChanged, getAuth } from "firebase/auth";
 
 const STAGES = ["Start", "Playing", "End"] as const;
 
-
 interface QuizzState {
   gameStage: string;
   questions: any[];
