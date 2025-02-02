@@ -72,9 +72,9 @@ export function Home() {
         <Suspense fallback={null}>
           <Stars
             radius={300}
-            depth={6000}
+            depth={3000}  // Menor profundidade para aproximar as estrelas
             count={12000}
-            factor={8}
+            factor={60}
             saturation={0}
             fade={true}
           />
