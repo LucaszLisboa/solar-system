@@ -1,6 +1,6 @@
 import { useFrame, useLoader } from "@react-three/fiber";
 import { TextureLoader } from "three";
-import { MouseEventHandler, useRef, useState } from "react";
+import { MouseEventHandler, useRef } from "react";
 import { animated } from '@react-spring/three'
 import * as THREE from "three";
 import { OrbitLine } from "./OrbitLine";
