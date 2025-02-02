@@ -49,6 +49,7 @@ export function Home() {
   }
 
   useEffect(() => {
+    // setar a camera para o centro do sistema solar
     return () => {
       speechSynthesis.cancel();
     }
@@ -67,7 +68,7 @@ export function Home() {
         <label>Velocidade: {velocidadeTranslacao.toFixed(2)}</label>
         <input type="range" min="0.01" max="10" step="0.001" value={velocidadeTranslacao} onChange={(e) => setVelocidadeTranslacao(Number(e.target.value))} className='inputRange' />
       </div>
-      <Canvas>
+      <Canvas camera={{ position: [0, 80, 200], fov: 50 }}>
         <Suspense fallback={null}>
           <Stars
             radius={300}
